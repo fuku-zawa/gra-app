@@ -82,10 +82,26 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    erb2haml (0.1.5)
+      html2haml
     erubi (1.12.0)
+    erubis (2.7.0)
     ffi (1.16.3)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    haml (6.2.3)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    hamlit (3.0.3)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    html2haml (2.3.0)
+      erubis (~> 2.7.0)
+      haml (>= 4.0)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -170,6 +186,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    ruby_parser (3.20.3)
+      sexp_processor (~> 4.16)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -185,6 +203,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sexp_processor (4.17.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -196,6 +215,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    temple (0.10.3)
     thor (1.2.2)
     thread_safe (0.3.6)
     tilt (2.3.0)
@@ -236,6 +256,8 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+  erb2haml
+  hamlit
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
