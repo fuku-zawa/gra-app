@@ -6,3 +6,17 @@
       =image_tag "B-Mobile Signal.svg", class: "status-bar-item"
       =image_tag "B-Wifi.svg", class: "status-bar-item"
       =image_tag "B-Battery.svg", class: "status-bar-item"
+
+-# 空白入れんとstatusと重なる→後で考える
+.blank
+
+.container
+  .top-bar
+    .top-bar-img
+      = image_tag "Tabs.svg"
+    .top-bar-username
+      = @user
+  
+  .profile-avatar
+    =image_tag "Ellipse.svg"
+  
