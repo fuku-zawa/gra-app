@@ -1,0 +1,18 @@
+.login-form {
+  margin-top: 40px;
+}
+.login-form label {
+  font-size: 11px;
+  color: #979797;
+}
+
+input {
+  border: 0;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=form.css.map */

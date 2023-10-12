@@ -5,11 +5,15 @@
     %title GraApp
     = csrf_meta_tags
     = csp_meta_tag
-    %meta{:content => "”width=device-width,initial-scale=1″", :name => "”viewport”"}/
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     %link{:crossorigin => "anonymous", :href => "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css", :integrity => "sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM", :rel => "stylesheet"}/
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{href: "https://fonts.googleapis.com", rel: "preconnect"}/
+    %link{crossorigin: "", href: "https://fonts.gstatic.com", rel: "preconnect"}/
+    %link{href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@400;500&display=swap", rel: "stylesheet"}/
   %body
-    %p.notice= notice
-    %p.alert= alert
+    -#　ログインの背景が一番上に来るようにとりあえずコメントアウト
+    -# %p.notice= notice
+    -# %p.alert= alert
     = yield
