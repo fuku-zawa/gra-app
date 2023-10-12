@@ -1,21 +1,47 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "Time Style.svg"
+    .status-bar-right
+      =image_tag "Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "Wifi.svg", class: "status-bar-item"
+      =image_tag "Battery.svg", class: "status-bar-item"
+
+  .login-top
+    = image_tag "Rectangle.png", class: "login-top-image"
+
+.container
+  .login-form
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :name
+        %br/
+        = f.text_field :name, autofocus: true, autocomplete: "name"
+        %hr
+      
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+        %hr
+
+      .field
+        = f.label :password
+        -# - if @minimum_password_length
+        -#   %em
+        -#     (#{@minimum_password_length} characters minimum)
+        %br/
+        = f.password_field :password, autocomplete: "new-password"
+        %hr
+
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+        %hr
+
+      .actions
+        = f.submit "CREATE ACCOUNT", class: "login-button"
+    %br
+    = render "devise/shared/links"

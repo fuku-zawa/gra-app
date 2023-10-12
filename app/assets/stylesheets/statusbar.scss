@@ -1,0 +1,20 @@
+.status-wrapper {
+  position: relative;
+}
+.status-bar {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.status-bar-left {
+  margin: 10px 0 0 10px;
+}
+.status-bar-right {
+  margin: 10px 10px 0 0;
+}
+.login-top-image {
+  width: 100%;
+  height: auto;
+}

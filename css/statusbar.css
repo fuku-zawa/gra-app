@@ -1,0 +1,28 @@
+.status-wrapper {
+  position: relative;
+}
+
+.status-bar {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.status-bar-left {
+  margin: 10px 0 0 10px;
+}
+
+.status-bar-right {
+  margin: 10px 10px 0 0;
+}
+
+.login-top-image {
+  width: 100%;
+  height: auto;
+}/*# sourceMappingURL=statusbar.css.map */
