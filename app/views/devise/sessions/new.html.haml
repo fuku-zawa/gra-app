@@ -1,17 +1,38 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "Time Style.svg"
+    .status-bar-right
+      =image_tag "Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "Wifi.svg", class: "status-bar-item"
+      =image_tag "Battery.svg", class: "status-bar-item"
+
+  .login-top
+    = image_tag "Rectangle.png", class: "login-top-image"
+
+.container
+  .login-form
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      %hr
+      
+      .field
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "current-password"
+      %hr
+      .forgot-pass
+        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+          = link_to "Forgot your password?", new_password_path(resource_name), class: "forgot-pass-link"
+      
+      -# - if devise_mapping.rememberable?
+      -#   .field
+      -#     = f.check_box :remember_me
+      -#     = f.label :remember_me
+      .actions
+        = f.submit "LOGIN", class: "login-button"
+    %br
+    -# = render "devise/shared/links"
