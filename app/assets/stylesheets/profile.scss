@@ -17,3 +17,18 @@
   margin: 40px 0;
   text-align: center;
 }
+.profile-info {
+  display: flex;
+  // justify-content: space-around;
+  text-align: center;
+  dl {
+    flex: 1;
+  }
+  dd {
+    font-size: 14px;
+    color:#9E9E9E;
+  }
+}
+.post-count,.post-follower,.post-following {
+  widows: 100%;
+}

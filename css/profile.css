@@ -10,4 +10,24 @@
 .profile-avatar {
   margin: 40px 0;
   text-align: center;
+}
+
+.profile-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+.profile-info dl {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.profile-info dd {
+  font-size: 14px;
+  color: #9E9E9E;
+}
+
+.post-count, .post-follower, .post-following {
+  widows: 100%;
 }/*# sourceMappingURL=profile.css.map */
