@@ -5,4 +5,22 @@
   width: 100%;
   background: #FFE600;
   font-size: 14px;
+}
+
+.image-button {
+  display: block;
+  background-color: rgb(179, 179, 179);
+  width: 120px;
+  height: 20px;
+  border-radius: 5px;
+  padding-top: 2px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.image-form {
+  display: none;
 }/*# sourceMappingURL=button.css.map */

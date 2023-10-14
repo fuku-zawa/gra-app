@@ -7,8 +7,6 @@
       =image_tag "B-Wifi.svg", class: "status-bar-item"
       =image_tag "B-Battery.svg", class: "status-bar-item"
 
--# 空白入れんとstatusと重なる→後で考える
-.blank
 
 .container
   .profile-top
@@ -32,8 +30,5 @@
       %dd Followings
   
   投稿画像一覧
-  %br
-  = @profile.user_id
-  = @profile.user.name
-  = @profile.introduction
+
  

@@ -12,6 +12,10 @@
   text-align: center;
 }
 
+.edit-profile-avatar {
+  margin-bottom: 10px;
+}
+
 .profile-info {
   display: -webkit-box;
   display: -ms-flexbox;
