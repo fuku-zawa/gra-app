@@ -16,4 +16,8 @@
     -#　ログインの背景が一番上に来るようにとりあえずコメントアウト
     -# %p.notice= notice
     -# %p.alert= alert
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
     = yield

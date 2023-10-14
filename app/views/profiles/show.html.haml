@@ -15,7 +15,7 @@
     .profile-top-back
       = image_tag "Tabs.svg"
     .profile-top-username
-      = @user
+      = @user_name
   
   .profile-avatar
     =image_tag "Ellipse.svg"
@@ -32,3 +32,8 @@
       %dd Followings
   
   投稿画像一覧
+  %br
+  = @profile.user_id
+  = @profile.user.name
+  = @profile.introduction
+ 
