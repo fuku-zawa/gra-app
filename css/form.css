@@ -17,6 +17,7 @@ textarea {
   height: 160px;
   border-color: #CCC;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 hr {
