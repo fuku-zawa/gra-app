@@ -28,11 +28,12 @@
     =f.label :avatar, "Avatar", class: "image-button"
     =f.file_field :avatar, class: "image-form"
 
+
     %div
       =f.fields_for :user do |user_f|
         =user_f.label :name, "Name"
         %br
-        =user_f.text_field :name
+        =user_f.text_field :name, value: @user_name
         %hr
 
     -# %div
@@ -51,6 +52,7 @@
       =f.text_area :introduction
 
     = f.submit "Submit", class: "login-button"
+
 
 
 
