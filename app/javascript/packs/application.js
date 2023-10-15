@@ -18,3 +18,14 @@ require("channels")
 
 import $ from 'jquery'
 
+$(() => {
+
+  $('.edit-profile-avatar').on('click', () => {
+    $("#avatar-form").click()
+  })
+
+  $('#edit-profile').on('change', () => {
+    $('#avatar-edit-button').click()
+  })
+
+})

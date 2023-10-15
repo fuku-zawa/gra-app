@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     @user_name = current_user
     @user_name.assign_attributes(user_params)
     if @profile.save && @user_name.save
-      redirect_to profile_path, notice: "変更しました"
+      redirect_to edit_profile_path, notice: "変更しました"
     else
       flash.now[:error] = "変更できませんでした"
       render :edit

@@ -18,16 +18,16 @@
     .profile-top-username
       Profile Edit
 
-  = form_with(model: @profile, url: profile_path, method: "put", local: true) do |f|
+  
+  = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "edit-profile") do |f|
     .profile-avatar.edit-profile-avatar
       - if @profile.avatar.attached?
         = image_tag @profile.avatar
       - else
         No avatar
-    %br
-    =f.label :avatar, "Avatar", class: "image-button"
-    =f.file_field :avatar, class: "image-form"
-
+    -# %br
+    -# =f.label :avatar, "Avatar", class: "image-button"
+    =f.file_field :avatar, class: "image-form", id: "avatar-form"
 
     %div
       =f.fields_for :user do |user_f|
@@ -51,7 +51,7 @@
       %br
       =f.text_area :introduction
 
-    = f.submit "Submit", class: "login-button"
+    = f.submit "Submit", class: "login-button", id: "avatar-edit-button"
 
 
 

@@ -8,7 +8,7 @@
 }
 
 .image-button {
-  display: block;
+  display: none;
   background-color: rgb(179, 179, 179);
   width: 120px;
   height: 20px;
@@ -22,5 +22,9 @@
 }
 
 .image-form {
+  display: none;
+}
+
+#avatar-edit-button {
   display: none;
 }/*# sourceMappingURL=button.css.map */
