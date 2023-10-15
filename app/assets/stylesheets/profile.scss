@@ -1,0 +1,40 @@
+.profile-top {
+  // ::after{
+  //   content:"";
+  //   clear: both;
+  //   display: block;
+  // }
+}
+.profile-top-back{
+  float: left;
+}
+.profile-top-username {
+  text-align: center;
+  float: none;
+}
+
+.profile-avatar {
+  margin: 40px 0;
+  text-align: center;
+}
+.show-profile-avatar {
+  margin-bottom :40px;
+}
+.edit-profile-avatar {
+  margin-bottom :30px;
+}
+.profile-info {
+  display: flex;
+  // justify-content: space-around;
+  text-align: center;
+  dl {
+    flex: 1;
+  }
+  dd {
+    font-size: 14px;
+    color:#9E9E9E;
+  }
+}
+.post-count,.post-follower,.post-following {
+  widows: 100%;
+}

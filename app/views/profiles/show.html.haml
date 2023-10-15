@@ -1,0 +1,54 @@
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+
+.container
+  .profile-top
+    .profile-top-back
+      = image_tag "status/Tabs.svg"
+    .profile-top-username
+      = @user_name
+
+  = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "show-profile") do |f|
+    .profile-avatar.show-profile-avatar
+      - if @profile.avatar.attached?
+        = image_tag @profile.avatar
+      - else
+        No avatar
+    -# %br
+    -# =f.label :avatar, "Avatar", class: "image-button"
+    =f.file_field :avatar, class: "image-form", id: "avatar-show-form"
+    = f.submit "Submit", class: "login-button", id: "avatar-show-button"
+
+  .profile-info
+    %dl.post-count
+      %dt= 44
+      %dd Posts
+    %dl.post-follower
+      %dt= 44
+      %dd Followers
+    %dl.post-following
+      %dt= 44
+      %dd Followings
+
+  .profile-post
+    %ul.profile-post-list
+      .profile-post-set
+        %li.profile-post-large
+          -# = image_tag "posts/post1.png"
+          = image_tag "posts/post1.png"
+        %li.profile-post-small
+          = image_tag "posts/post2.png", class: "posts-image-margin"
+          = image_tag "posts/post3.png"
+      .profile-post-set
+        %li.profile-post-small
+          = image_tag "posts/post4.png", class: "posts-image-margin"
+          = image_tag "posts/post5.png"
+        %li.profile-post-large
+          = image_tag "posts/post6.png"

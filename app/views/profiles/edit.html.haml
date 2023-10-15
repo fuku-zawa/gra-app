@@ -1,0 +1,59 @@
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+.container
+  %ul
+    - @profile.errors.full_messages.each do |message|
+      %li= message
+
+  .profile-top
+    .profile-top-back
+      = image_tag "status/Tabs.svg"
+    .profile-top-username
+      Profile Edit
+
+  
+  = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "edit-profile") do |f|
+    .profile-avatar.edit-profile-avatar
+      - if @profile.avatar.attached?
+        = image_tag @profile.avatar
+      - else
+        No avatar
+    -# %br
+    -# =f.label :avatar, "Avatar", class: "image-button"
+    =f.file_field :avatar, class: "image-form", id: "avatar-edit-form"
+
+    %div
+      =f.fields_for :user do |user_f|
+        =user_f.label :name, "Name"
+        %br
+        =user_f.text_field :name, value: @user_name
+        %hr
+
+    -# %div
+    -#   =f.label :gender, "Gender"
+    -#   %br
+      -# =f.select :gender
+    %div
+      =f.label :birthday, "Birthday"
+      %br
+      =f.date_field :birthday
+      %hr
+
+    %div
+      =f.label :introduction, "Introduction"
+      %br
+      =f.text_area :introduction
+
+    = f.submit "Submit", class: "login-button", id: "avatar-edit-button"
+
+
+
+
+  

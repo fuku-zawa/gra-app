@@ -15,3 +15,24 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import $ from 'jquery'
+
+$(() => {
+
+  $('.edit-profile-avatar').on('click', () => {
+    $("#avatar-edit-form").click()
+  })
+
+  $('#edit-profile').on('change', () => {
+    $('#avatar-edit-button').click()
+  })
+  $('.show-profile-avatar').on('click', () => {
+    $("#avatar-show-form").click()
+  })
+
+  $('#show-profile').on('change', () => {
+    $('#avatar-show-button').click()
+  })
+
+})

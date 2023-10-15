@@ -40,6 +40,97 @@ ol, ul {
   list-style-type: none;
 }
 
+.profile-post {
+  margin-top: 40px;
+}
+
+.profile-post-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile-post-large {
+  width: 207px;
+  height: 192px;
+  margin: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: black;
+}
+.profile-post-large img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.profile-post-small {
+  width: 128px;
+  margin: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.profile-post-small img {
+  width: 100%;
+  max-width: 100%;
+  background-color: black;
+  height: auto;
+  margin: auto;
+  display: block;
+}
+.profile-post-small .posts-image-margin {
+  margin-bottom: 8px;
+}
+
+.login-button {
+  margin-top: 50px;
+  height: auto;
+  min-height: 48px;
+  width: 100%;
+  background: #FFE600;
+  font-size: 14px;
+}
+
+.image-button {
+  display: none;
+  background-color: rgb(179, 179, 179);
+  width: 120px;
+  height: 20px;
+  border-radius: 5px;
+  padding-top: 2px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.image-form {
+  display: none;
+}
+
+#avatar-edit-button, #avatar-show-button {
+  display: none;
+}
+
 * {
   font-family: "Noto Sans JP", sans-serif;
   font-family: "Poppins", sans-serif;

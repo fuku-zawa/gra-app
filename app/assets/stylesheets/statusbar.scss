@@ -1,8 +1,9 @@
 .status-wrapper {
-  position: relative;
+  // position: relative;
+  margin-bottom: 20px;
 }
 .status-bar {
-  position: absolute;
+  // position: absolute;
   width: 100%;
   height: auto;
   display: flex;
@@ -17,4 +18,8 @@
 .login-top-image {
   width: 100%;
   height: auto;
+}
+
+.blank {
+  height:60px;
 }
