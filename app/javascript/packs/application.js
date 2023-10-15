@@ -21,11 +21,18 @@ import $ from 'jquery'
 $(() => {
 
   $('.edit-profile-avatar').on('click', () => {
-    $("#avatar-form").click()
+    $("#avatar-edit-form").click()
   })
 
   $('#edit-profile').on('change', () => {
     $('#avatar-edit-button').click()
+  })
+  $('.show-profile-avatar').on('click', () => {
+    $("#avatar-show-form").click()
+  })
+
+  $('#show-profile').on('change', () => {
+    $('#avatar-show-button').click()
   })
 
 })

@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @profile = current_user.profile
+    @profile = current_user.prepare_profile
     @user_name = current_user.name
   end
 
@@ -16,13 +16,8 @@ class ProfilesController < ApplicationController
     @profile = current_user.prepare_profile
     @profile.assign_attributes(profile_params)
     @user_name = current_user
-    @user_name.assign_attributes(user_params)
-    if @profile.save && @user_name.save
-      redirect_to edit_profile_path, notice: "変更しました"
-    else
-      flash.now[:error] = "変更できませんでした"
-      render :edit
-    end
+    
+    avatar_change
     
   end
 
@@ -39,4 +34,29 @@ class ProfilesController < ApplicationController
   def user_params
     params[:profile].require(:user).permit(:name)
   end
+
+  def avatar_change
+    # editページのprofileをupdate
+    if params[:profile][:user].presence
+      @user_name.assign_attributes(user_params)
+      if @profile.save && @user_name.save
+        redirect_to edit_profile_path, notice: "変更しました"
+      else
+        flash.now[:error] = "変更できませんでした"
+        render :edit
+      end
+    # showページのprofileをupdate
+    else
+      if @profile.save
+        redirect_to profile_path, notice: "変更しました"
+      else
+        flash.now[:error] = "変更できませんでした"
+        render :show
+      end
+    end
+  end
+
+
+
+
 end

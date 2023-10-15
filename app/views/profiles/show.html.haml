@@ -14,10 +14,18 @@
       = image_tag "Tabs.svg"
     .profile-top-username
       = @user_name
-  
-  .profile-avatar
-    =image_tag "Ellipse.svg"
-  
+
+  = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "show-profile") do |f|
+    .profile-avatar.show-profile-avatar
+      - if @profile.avatar.attached?
+        = image_tag @profile.avatar
+      - else
+        No avatar
+    -# %br
+    -# =f.label :avatar, "Avatar", class: "image-button"
+    =f.file_field :avatar, class: "image-form", id: "avatar-show-form"
+    = f.submit "Submit", class: "login-button", id: "avatar-show-button"
+
   .profile-info
     %dl.post-count
       %dt= 44
