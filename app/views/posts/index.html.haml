@@ -1,0 +1,48 @@
+= @user
+
+= link_to "ログアウト", destroy_user_session_path, data: {method: "delete"}
+
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+.container
+  .post
+    %ul.post-list
+      %li.post-list-avatar
+        = image_tag "Ellipse.svg"
+      .post-list-info
+        %li
+          = "user-name"
+        %li.post-list-info-time
+          = "3 hours ago"
+    
+    .post-photo
+      %ul.post-list
+        .post-set
+          %li.post-large
+            =image_tag "posts/post7.png"
+          %li.post-small
+            =image_tag "posts/post8.png", class: "posts-image-margin"
+            =image_tag "posts/post9.png"
+    
+    %ul.post-icon
+      %li
+        = image_tag "icon/heart.png"
+      %li
+        = image_tag "icon/comment.svg"
+      %li
+        = image_tag "icon/share.svg"
+    
+    .post-likes
+      = "Jasmine and 12,000 other liked your post"
+    
+    .post-mind
+      = "Jasmine"
+      = "Summer holiday:3"
+        
