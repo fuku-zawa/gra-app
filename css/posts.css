@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .profile-post {
   margin-top: 40px;
 }
@@ -101,4 +102,40 @@
 }
 .post-small .posts-image-margin {
   margin-bottom: 8px;
+}
+
+.post-new-tabs {
+  margin-bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.post-new-tabs .left {
+  text-align: left; /* Cancelを左寄せ */
+}
+.post-new-tabs .right {
+  text-align: right; /* Postを右寄せ */
+}
+
+.post-new-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.post-new-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-new-avatar {
+  margin-right: 15px;
 }/*# sourceMappingURL=posts.css.map */

@@ -77,3 +77,28 @@
     margin-bottom: 8px;
   }
 }
+
+// new
+.post-new-tabs {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  .left {
+    text-align: left; /* Cancelを左寄せ */
+  }
+  .right {
+    text-align: right; /* Postを右寄せ */
+  }
+}
+.post-new-item {
+  flex: 1;
+  text-align: center;
+}
+.post-new-user {
+  display: flex;
+  align-items: center;
+}
+.post-new-avatar {
+  margin-right: 15px;
+}
+// 

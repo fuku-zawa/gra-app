@@ -1,0 +1,23 @@
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+.container
+  %ul.post-new-tabs
+    %li.post-new-item.left
+      = link_to "Cancel", root_path
+    %li.post-new-item
+      = "Status"
+    %li.post-new-item.right
+      = "Post"
+
+  %ul.post-new-user
+    %li.post-new-avatar
+      =image_tag "Bitmap.png"
+    %li.post-new-name
+      = "Jackie Chan"
