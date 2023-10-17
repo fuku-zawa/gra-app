@@ -21,3 +21,10 @@
       =image_tag "Bitmap.png"
     %li.post-new-name
       = "Jackie Chan"
+
+  = form_with(model:@post,  local:true) do |f|
+    %div
+      = f.text_field :mind, placeholder: "What's on your mind?" , class:"text"
+      %hr
+
+    = f.submit "保存" , class:"btn-primary"
