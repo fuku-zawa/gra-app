@@ -119,12 +119,20 @@
 .post-new-tabs .right {
   text-align: right; /* Postを右寄せ */
 }
+.post-new-tabs .right input {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  background-color: white;
+  color: #BDBDBD;
+}
 
 .post-new-item {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   text-align: center;
+  font-size: 16px;
 }
 
 .post-new-user {
@@ -134,6 +142,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 16px;
 }
 
 .post-new-avatar {

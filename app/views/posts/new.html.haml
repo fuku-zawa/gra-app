@@ -8,23 +8,27 @@
       =image_tag "status/B-Battery.svg", class: "status-bar-item"
 
 .container
-  %ul.post-new-tabs
-    %li.post-new-item.left
-      = link_to "Cancel", root_path
-    %li.post-new-item
-      = "Status"
-    %li.post-new-item.right
-      = "Post"
-
-  %ul.post-new-user
-    %li.post-new-avatar
-      =image_tag "Bitmap.png"
-    %li.post-new-name
-      = "Jackie Chan"
-
   = form_with(model:@post,  local:true) do |f|
+    %ul.post-new-tabs
+      %li.post-new-item.left
+        = link_to "Cancel", root_path
+      %li.post-new-item
+        = "Status"
+      %li.post-new-item.right
+        = f.submit "Post" 
+        
+    %ul.post-new-user
+      %li.post-new-avatar
+        =image_tag "Bitmap.png"
+      %li.post-new-name
+        = "Jackie Chan"
+
     %div
       = f.text_field :mind, placeholder: "What's on your mind?" , class:"text"
       %hr
 
-    = f.submit "保存" , class:"btn-primary"
+    %div
+      = f.label :photo, '+ Album', class: "post-image-button", for: "post-photo"
+      = f.file_field :photo, class: "image-form-none", id: "post-photo"
+
+    

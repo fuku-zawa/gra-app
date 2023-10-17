@@ -88,15 +88,24 @@
   }
   .right {
     text-align: right; /* Postを右寄せ */
+    input {
+      margin: 0;
+      padding: 0;
+      text-align: right;
+      background-color: white;
+      color: #BDBDBD;
+    }
   }
 }
 .post-new-item {
   flex: 1;
   text-align: center;
+  font-size: 16px;
 }
 .post-new-user {
   display: flex;
   align-items: center;
+  font-size: 16px;
 }
 .post-new-avatar {
   margin-right: 15px;
