@@ -29,8 +29,10 @@
             %li.post-large
               =image_tag post.photos[0].variant(resize_and_pad: [198, 225]).processed
             %li.post-small
-              =image_tag "posts/post8.png", class: "posts-image-margin"
-              =image_tag "posts/post9.png"
+              - if post.photos[1].presence
+                =image_tag post.photos[1].variant(resize_and_pad: [138, 109]).processed, class: "posts-image-margin"
+              - if post.photos[2].presence
+                =image_tag post.photos[2].variant(resize_and_pad: [138, 109]).processed
       
       %ul.post-icon
         %li
