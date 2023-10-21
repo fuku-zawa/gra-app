@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.post {
+  margin-bottom: 50px;
+}
+
 .profile-post {
   margin-top: 40px;
 }

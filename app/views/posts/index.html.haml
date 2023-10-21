@@ -12,42 +12,43 @@
       =image_tag "status/B-Battery.svg", class: "status-bar-item"
 
 .container
-  .post
-    %ul.post-list
-      %li.post-list-avatar
-        = image_tag "Ellipse.svg"
-      .post-list-info
-        %li
-          = "user-name"
-        %li.post-list-info-time
-          = "3 hours ago"
-    
-    .post-photo
+  - @posts.each do |post|
+    .post
       %ul.post-list
-        .post-set
-          %li.post-large
-            =image_tag "posts/post7.png"
-          %li.post-small
-            =image_tag "posts/post8.png", class: "posts-image-margin"
-            =image_tag "posts/post9.png"
-    
-    %ul.post-icon
-      %li
-        = image_tag "icon/heart.png"
-      %li
-        = image_tag "icon/comment.svg"
-      %li
-        = image_tag "icon/share.svg"
-    
-    .post-likes
-      = "Jasmine and 12,000 other liked your post"
-    
-    .post-mind
-      = "Jasmine"
-      = "Summer holiday:3"
+        %li.post-list-avatar
+          = image_tag post.user.avatar
+        .post-list-info
+          %li
+            = post.user.name
+          %li.post-list-info-time
+            = "3 hours ago"
+      
+      .post-photo
+        %ul.post-list
+          .post-set
+            %li.post-large
+              =image_tag "posts/post7.png"
+            %li.post-small
+              =image_tag "posts/post8.png", class: "posts-image-margin"
+              =image_tag "posts/post9.png"
+      
+      %ul.post-icon
+        %li
+          = image_tag "icon/heart.png"
+        %li
+          = image_tag "icon/comment.svg"
+        %li
+          = image_tag "icon/share.svg"
+      
+      .post-likes
+        = "Jasmine and 12,000 other liked your post"
+      
+      .post-mind
+        = "Jasmine"
+        = "Summer holiday:3"
 
-  = image_tag @last.photos[0]
-  - if @last.photos[1].presence
-    = image_tag @last.photos[1]
-  - else
-    うんこ
+    -# = image_tag @last.photos[0]
+    -# - if @last.photos[1].presence
+    -#   = image_tag @last.photos[1]
+    -# - else
+    -#   うんこ

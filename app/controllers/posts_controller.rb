@@ -2,10 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
 
   def index
-    @user = current_user&.name || "No Sign"
     @posts = Post.all
-    @last = Post.last
-    @last_photo = @last.photos
   end
 
   def new
