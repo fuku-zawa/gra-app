@@ -1,10 +1,24 @@
-.profile-top-back {
+.profile-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profile-top-edit a {
+  text-decoration: none;
+  color: #333A42;
+}
+
+.profile-edit-top-back {
   float: left;
 }
 
-.profile-top-username {
-  text-align: center;
+.profile-edit-top-username {
   float: none;
+  text-align: center;
 }
 
 .profile-avatar {

@@ -1,17 +1,33 @@
 .profile-top {
-  // ::after{
-  //   content:"";
-  //   clear: both;
-  //   display: block;
-  // }
+  display: flex;
+  justify-content: space-between;
 }
 .profile-top-back{
-  float: left;
+
 }
 .profile-top-username {
-  text-align: center;
-  float: none;
+
 }
+.profile-top-edit {
+  a {
+    text-decoration: none;
+    color: #333A42;
+  }
+}
+
+// profile/edit
+.profile-edit-top {
+}
+.profile-edit-top-back{
+  float: left;
+}
+.profile-edit-top-username {
+  float: none;
+  text-align: center;
+}
+
+// 
+
 
 .profile-avatar {
   margin: 40px 0;

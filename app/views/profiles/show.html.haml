@@ -12,9 +12,12 @@
 .container
   .profile-top
     .profile-top-back
-      = image_tag "status/Tabs.svg"
+      = link_to :back do
+        = image_tag "status/Tabs.svg"
     .profile-top-username
       = @user_name
+    .profile-top-edit
+      = link_to "Edit", edit_profile_path 
 
   = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "show-profile") do |f|
     .profile-avatar.show-profile-avatar
