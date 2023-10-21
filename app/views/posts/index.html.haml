@@ -21,7 +21,7 @@
           %li
             = post.user.name
           %li.post-list-info-time
-            = "3 hours ago"
+            = time_ago_in_words(post.created_at) + " ago"
       
       .post-photo
         %ul.post-list
@@ -46,8 +46,7 @@
         = "Jasmine and 12,000 other liked your post"
       
       .post-mind
-        = "Jasmine"
-        = "Summer holiday:3"
+        = post.mind
 
     -# = image_tag @last.photos[0]
     -# - if @last.photos[1].presence
