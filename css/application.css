@@ -44,7 +44,8 @@ ol, ul {
   margin-top: 40px;
 }
 
-.profile-post-set {
+.profile-post-set,
+.post-set {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -53,7 +54,8 @@ ol, ul {
           align-items: center;
 }
 
-.profile-post-large {
+.profile-post-large,
+.post-large {
   width: 207px;
   height: 192px;
   margin: 4px;
@@ -70,14 +72,16 @@ ol, ul {
           justify-content: center;
   background-color: black;
 }
-.profile-post-large img {
+.profile-post-large img,
+.post-large img {
   width: 100%;
   max-width: 100%;
   display: block;
   margin: auto;
 }
 
-.profile-post-small {
+.profile-post-small,
+.post-small {
   width: 128px;
   margin: 4px;
   display: -webkit-box;
@@ -88,7 +92,8 @@ ol, ul {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.profile-post-small img {
+.profile-post-small img,
+.post-small img {
   width: 100%;
   max-width: 100%;
   background-color: black;
@@ -96,7 +101,8 @@ ol, ul {
   margin: auto;
   display: block;
 }
-.profile-post-small .posts-image-margin {
+.profile-post-small .posts-image-margin,
+.post-small .posts-image-margin {
   margin-bottom: 8px;
 }
 
@@ -131,8 +137,25 @@ ol, ul {
   display: none;
 }
 
+.post-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.post-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 * {
   font-family: "Noto Sans JP", sans-serif;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }/*# sourceMappingURL=application.css.map */

@@ -1,13 +1,16 @@
-
+.post {
+  margin-bottom: 50px;
+}
 .profile-post {
   margin-top: 40px;
 }
 
-.profile-post-set{
+.profile-post-set,
+.post-set {
   display: flex; 
   align-items: center;
 }
-.profile-post-large{
+.profile-post-large {
   // flex: 1; 
   width: 207px;
   height: 192px;
@@ -24,9 +27,46 @@
     margin: auto;
   }
 }
-.profile-post-small{
+.post-large {
+  // flex: 1; 
+  width: 198px;
+  height: 225px;
+  margin: 4px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+}
+.profile-post-small {
   // flex: 1; 
   width: 128px;
+  margin: 4px;
+  display: flex;
+  flex-direction: column; 
+  // padding: 4px 4px;
+  img {
+    width: 100%;
+    max-width: 100%;
+    background-color: black;
+    height: auto;
+    // margin-bottom: 4px;
+    display: block;
+  }
+  .posts-image-margin {
+    margin-bottom: 8px;
+  }
+}
+
+.post-small {
+  // flex: 1; 
+  width: 138px;
   margin: 4px;
   display: flex;
   flex-direction: column; 
@@ -43,3 +83,43 @@
     margin-bottom: 8px;
   }
 }
+
+// new
+.post-new-tabs {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  .left {
+    text-align: left; /* Cancelを左寄せ */
+  }
+  .right {
+    text-align: right; /* Postを右寄せ */
+    input {
+      margin: 0;
+      padding: 0;
+      text-align: right;
+      background-color: white;
+      color: #BDBDBD;
+    }
+  }
+}
+.post-new-item {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+}
+.post-new-user {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.post-new-avatar {
+  margin-right: 15px;
+}
+#photo-preview {
+  display: none;
+}
+.photo-preview { 
+  display: none;
+}
+// 

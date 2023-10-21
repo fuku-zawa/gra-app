@@ -12,10 +12,11 @@
     - @profile.errors.full_messages.each do |message|
       %li= message
 
-  .profile-top
-    .profile-top-back
-      = image_tag "status/Tabs.svg"
-    .profile-top-username
+  .profile-edit-top
+    .profile-edit-top-back
+      = link_to :back do
+        = image_tag "status/Tabs.svg"
+    .profile-edit-top-username
       Profile Edit
 
   
@@ -27,7 +28,7 @@
         No avatar
     -# %br
     -# =f.label :avatar, "Avatar", class: "image-button"
-    =f.file_field :avatar, class: "image-form", id: "avatar-edit-form"
+    =f.file_field :avatar, class: "image-form-none", id: "avatar-edit-form"
 
     %div
       =f.fields_for :user do |user_f|

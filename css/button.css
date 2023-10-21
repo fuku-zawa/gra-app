@@ -21,7 +21,20 @@
   margin-bottom: 40px;
 }
 
-.image-form {
+.post-image-button {
+  display: block;
+  width: 90px;
+  height: auto;
+  border: solid 1px #E0E0E0;
+  border-radius: 3px;
+  padding: 5px 0;
+  color: #4F4F4F;
+  text-decoration: none;
+  text-align: center;
+  margin-right: auto;
+}
+
+.image-form-none {
   display: none;
 }
 

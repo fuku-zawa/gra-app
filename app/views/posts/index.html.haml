@@ -1,0 +1,55 @@
+= @user
+
+= link_to "ログアウト", destroy_user_session_path, data: {method: "delete"}
+
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+.container
+  - @posts.each do |post|
+    .post
+      %ul.post-list
+        %li.post-list-avatar
+          = image_tag post.user.avatar
+        .post-list-info
+          %li
+            = post.user.name
+          %li.post-list-info-time
+            = time_ago_in_words(post.created_at) + " ago"
+      
+      .post-photo
+        %ul.post-list
+          .post-set
+            %li.post-large
+              =image_tag post.photos[0].variant(resize_and_pad: [198, 225]).processed
+            %li.post-small
+              - if post.photos[1].presence
+                =image_tag post.photos[1].variant(resize_and_pad: [138, 109]).processed, class: "posts-image-margin"
+              - if post.photos[2].presence
+                =image_tag post.photos[2].variant(resize_and_pad: [138, 109]).processed
+      
+      %ul.post-icon
+        %li
+          = image_tag "icon/heart.png"
+        %li
+          = image_tag "icon/comment.svg"
+        %li
+          = image_tag "icon/share.svg"
+      
+      .post-likes
+        = "Jasmine and 12,000 other liked your post"
+      
+      .post-mind
+        = post.mind
+
+    -# = image_tag @last.photos[0]
+    -# - if @last.photos[1].presence
+    -#   = image_tag @last.photos[1]
+    -# - else
+    -#   うんこ

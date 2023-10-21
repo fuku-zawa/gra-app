@@ -8,27 +8,34 @@
       =image_tag "status/B-Battery.svg", class: "status-bar-item"
 
 
+
 .container
   .profile-top
     .profile-top-back
-      = image_tag "status/Tabs.svg"
+      = link_to :back do
+        = image_tag "status/Tabs.svg"
     .profile-top-username
       = @user_name
+    .profile-top-edit
+      = link_to "Edit", edit_profile_path 
 
   = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "show-profile") do |f|
     .profile-avatar.show-profile-avatar
       - if @profile.avatar.attached?
         = image_tag @profile.avatar
       - else
-        No avatar
+        = image_tag "default-avatar.png"
     -# %br
     -# =f.label :avatar, "Avatar", class: "image-button"
-    =f.file_field :avatar, class: "image-form", id: "avatar-show-form"
+    
+    -# アバター変更のためのフォーム（非表示）
+    = f.file_field :avatar, class: "image-form-none", id: "avatar-show-form"
     = f.submit "Submit", class: "login-button", id: "avatar-show-button"
+    -# 
 
   .profile-info
     %dl.post-count
-      %dt= 44
+      %dt= current_user.posts.length
       %dd Posts
     %dl.post-follower
       %dt= 44
@@ -39,16 +46,20 @@
 
   .profile-post
     %ul.profile-post-list
-      .profile-post-set
-        %li.profile-post-large
-          -# = image_tag "posts/post1.png"
-          = image_tag "posts/post1.png"
-        %li.profile-post-small
-          = image_tag "posts/post2.png", class: "posts-image-margin"
-          = image_tag "posts/post3.png"
-      .profile-post-set
-        %li.profile-post-small
-          = image_tag "posts/post4.png", class: "posts-image-margin"
-          = image_tag "posts/post5.png"
-        %li.profile-post-large
-          = image_tag "posts/post6.png"
+      - num = 0
+      - while num < @list.length do
+        .profile-post-set
+          %li.profile-post-large
+            = image_tag @list[num]
+          %li.profile-post-small
+            = image_tag @list[num+1] || "", class: "posts-image-margin"
+            = image_tag @list[num+2] || ""
+        .profile-post-set
+          %li.profile-post-small
+            = image_tag @list[num+3] || "", class: "posts-image-margin"
+            = image_tag @list[num+4] || ""
+          %li.profile-post-large
+            = image_tag @list[num+5] || ""
+        - num += 6
+      
+      = @list.length
