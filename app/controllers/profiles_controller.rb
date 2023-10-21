@@ -4,6 +4,10 @@ class ProfilesController < ApplicationController
   def show
     @profile = current_user.prepare_profile
     @user_name = current_user.name
+    @posts = current_user.posts
+      
+    @list = []
+    post_list
   end
 
   def edit
@@ -52,6 +56,15 @@ class ProfilesController < ApplicationController
       else
         flash.now[:error] = "変更できませんでした"
         render :show
+      end
+    end
+  end
+
+  # ユーザのpostからphotoを取得しリストにする→profiles/showで表示
+  def post_list
+    @posts.each do |post|
+      post.photos.each do |photo|
+        @list.append(photo)
       end
     end
   end

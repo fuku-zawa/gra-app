@@ -81,8 +81,10 @@
   max-width: 100%;
   background-color: black;
   height: auto;
-  margin: auto;
   display: block;
+}
+.profile-post-small .posts-image-margin {
+  margin-bottom: 8px;
 }
 
 .post-small {

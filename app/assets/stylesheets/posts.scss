@@ -56,10 +56,14 @@
     max-width: 100%;
     background-color: black;
     height: auto;
-    margin: auto;
+    // margin-bottom: 4px;
     display: block;
   }
+  .posts-image-margin {
+    margin-bottom: 8px;
+  }
 }
+
 .post-small {
   // flex: 1; 
   width: 138px;
