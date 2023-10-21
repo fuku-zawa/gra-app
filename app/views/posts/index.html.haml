@@ -45,4 +45,9 @@
     .post-mind
       = "Jasmine"
       = "Summer holiday:3"
-        
+
+  = image_tag @last.photos[0]
+  - if @last.photos[1].presence
+    = image_tag @last.photos[1]
+  - else
+    うんこ

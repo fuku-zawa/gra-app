@@ -13,8 +13,8 @@
 #  index_posts_on_user_id  (user_id)
 #
 class Post < ApplicationRecord
-  has_one_attached :photo
+  has_many_attached :photos
   belongs_to :user
   
-
+  # accepts_nested_attributes_for :photos
 end

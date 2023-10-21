@@ -35,4 +35,40 @@ $(() => {
     $('#avatar-show-button').click()
   })
 
+  // アップする画像のプレビュー（posts/new）
+  // file_fieldから選択されたファイルを読み込んで表示する
+  $(document).ready(function() {
+    // file_fieldの値（選択されたファイル）が変更されたときに実行するイベントハンドラ
+    $('#post-photo').on('change', function() {
+      // 選択したファイルthis（inputタグがそのまま入ってくる感じ？）を格納
+      const preview = this
+
+      for (let num=0; num < preview.files.length; num ++)
+        //filesはinput要素のプロパティ（filesプロパティを持つfile_fieldから取得されたファイルの情報を格納）
+        if (preview.files && preview.files[num]) {
+
+          // ファイルの内容を非同期で読み込むAPIで、FileReaderオブジェクトを作成
+          const reader = new FileReader()
+          
+          // onloadはファイルの読み込みが完了したら実行される関数
+          // 読み込みは、readAsDataURLで実行されるので、先にそっちが実行される
+          // ファイルを読み込んだら、#photo-previewに、src属性とcssの設定を変更する
+          reader.onload = function(e) {
+            // イベントが発生したHTML要素をevent.targetで取得する
+            // fileReaderで読み込みできたら、resultプロパティで中身のデータ（Base64）を取得できる
+            // appendにすることで、imgタグが追加できる（複数の場合もOK）
+            $('#photo-preview').append('<div class= pre-wrap>')
+            $('#photo-preview').append('<img src="' + e.target.result + '" alt="Image Preview" class= pre>')
+            $('#photo-preview').css('display', 'block')
+            $('.pre').css('max-width', '150px')
+            $('.pre').css('max-height', 'auto')
+          }
+          // 指定されたファイルを非同期で読み込む（ないと、選択して非同期で読み込まない）
+          
+          reader.readAsDataURL(preview.files[num])
+
+        }
+    })
+  })
+
 })

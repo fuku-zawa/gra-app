@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   delegate :birthday, :introduction, :gender, :avatar, to: :profile, allow_nil: true
+  delegate :mind, :photos, to: :posts, allow_nil: true
 
   def prepare_profile
     profile || build_profile

@@ -8,7 +8,7 @@
       =image_tag "status/B-Battery.svg", class: "status-bar-item"
 
 .container
-  = form_with(model:@post,  local:true) do |f|
+  = form_with(model:@post, url: posts_path, method: "post", local:true) do |f|
     %ul.post-new-tabs
       %li.post-new-item.left
         = link_to "Cancel", root_path
@@ -16,7 +16,7 @@
         = "Status"
       %li.post-new-item.right
         = f.submit "Post" 
-        
+
     %ul.post-new-user
       %li.post-new-avatar
         =image_tag "Bitmap.png"
@@ -24,11 +24,18 @@
         = "Jackie Chan"
 
     %div
+      -# = f.label :mind
       = f.text_field :mind, placeholder: "What's on your mind?" , class:"text"
       %hr
 
     %div
-      = f.label :photo, '+ Album', class: "post-image-button", for: "post-photo"
-      = f.file_field :photo, class: "image-form-none", id: "post-photo"
+      = f.label :photos, '+ Album', class: "post-image-button", for: "post-photo"
+      = f.file_field :photos, class: "image-form-none", id: "post-photo", multiple: true
 
+    -# 画像を選択したら、JSでdisplayを表示させる（とりあえずの初期画像を設定してある）
+    -# , post.photo.variant(resize_and_pad: [100, 100])したかったけどエラーで後でにする
     
+    -# = image_tag "Rectangle.png" ,id: "photo-preview"
+    %div#photo-preview
+
+
