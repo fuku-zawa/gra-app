@@ -36,12 +36,11 @@
       
       %ul.post-icon
         %li
-          - if current_user.has_liked(post)
-            = link_to post_like_path(post), data: { method: "delete" } do
-              = image_tag "icon/heart.png"
-          - else
-            = link_to post_like_path(post), data: { method: "post" } do
-              = image_tag "icon/nolike.svg"
+          = link_to post_like_path(post), data: { method: "delete" } do
+            = image_tag "icon/heart.png", class: "hidden active-heart"
+          = link_to post_like_path(post), data: { method: "post" } do
+            = image_tag "icon/nolike.svg", class: "hidden inactive-heart"
+
         %li
           = image_tag "icon/comment.svg"
         %li
