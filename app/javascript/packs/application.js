@@ -17,6 +17,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import $ from 'jquery'
+import axios from 'axios'
 
 $(() => {
 
