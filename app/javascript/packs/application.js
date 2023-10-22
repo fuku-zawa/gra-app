@@ -21,7 +21,13 @@ import axios from 'axios'
 
 // いいねの設定
 document.addEventListener('DOMContentLoaded', () => {
-  
+  const dataset = $('#post-get-id').data()
+  const postId = dataset.postId
+
+  axios.get(`/posts/${postId}/like`)
+    .then((response) => {
+      console.log(response)
+    })
 })
 // 
 

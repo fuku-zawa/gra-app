@@ -13,7 +13,7 @@
 
 .container
   - @posts.each do |post|
-    .post
+    .post#post-get-id{data: {post_id: post.id}}
       %ul.post-list
         %li.post-list-avatar
           = image_tag post.user.avatar || "default-avatar.png"
