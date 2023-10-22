@@ -19,6 +19,13 @@ require("channels")
 import $ from 'jquery'
 import axios from 'axios'
 
+// いいねの設定
+document.addEventListener('DOMContentLoaded', () => {
+  
+})
+// 
+
+
 $(() => {
 
   $('.edit-profile-avatar').on('click', () => {
