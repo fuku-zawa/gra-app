@@ -36,7 +36,8 @@
       
       %ul.post-icon
         %li
-          = image_tag "icon/heart.png"
+          = link_to post_like_path(post.id), data: { method: "post" } do
+            = image_tag "icon/nolike.svg"
         %li
           = link_to "https://twitter.com/share?url=#{posts_path(post.id)}&text=【test】%0a%0a#{post.mind}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do
             = image_tag "icon/comment.svg"
