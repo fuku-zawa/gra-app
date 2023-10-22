@@ -25,6 +25,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   delegate :birthday, :introduction, :gender, :avatar, to: :profile, allow_nil: true
   delegate :mind, :photos, to: :posts, allow_nil: true
@@ -36,4 +37,10 @@ class User < ApplicationRecord
   def display_name
     profile&.name || self.email.split("@")[0]
   end
+
+  def has_liked(post)
+    likes.exists?(post_id: post.id)
+  end
+
+
 end
