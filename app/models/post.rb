@@ -17,5 +17,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   belongs_to :user
   
-  # accepts_nested_attributes_for :photos
+  def likes_count
+    likes.count
+  end
 end

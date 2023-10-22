@@ -49,8 +49,13 @@
             = image_tag "icon/share.svg"
       
       .post-likes
-        = "Jasmine and 12,000 other liked your post"
-      
+        - if post.likes_count == 0
+          = "No liked"
+        - elsif post.likes_count == 1
+          = "#{@posts.first.user.name} liked your post"
+        - else
+          = "#{@posts.first.user.name} and #{post.likes_count - 1} other liked your post"
+
       .post-mind
         = post.mind
 
