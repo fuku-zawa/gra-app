@@ -37,4 +37,8 @@ class User < ApplicationRecord
   def display_name
     profile&.name || self.email.split("@")[0]
   end
+
+  def has_liked(post)
+    likes.exists?(id: post.id)
+  end
 end
