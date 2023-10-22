@@ -1,6 +1,14 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    post = Post.find(params[:post_id])
+    like_status = current_user.has_liked(post)
+    # jsonのレスポンスがlike_status（trueかfalseを返す）
+    render json: {hasLiked: like_status}
+  end
+
+
   def create
     # ヘルパー：post_like_path　URL：/posts/:post_id/like(.:format)
     # リクエストで送られてくる:post_idをparamsで取得＝いいねしたpostを取得
