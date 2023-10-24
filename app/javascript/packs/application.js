@@ -19,21 +19,65 @@ require("channels")
 import $ from 'jquery'
 import axios from 'axios'
 
-// いいねの設定
-document.addEventListener('DOMContentLoaded', () => {
-  const dataset = $('#post-get-id').data()
-  const postId = dataset.postId
 
-  axios.get(`/posts/${postId}/like`)
+
+document.addEventListener('DOMContentLoaded', () => {
+  // .post-index-countがついた要素をすべて取得
+  const postElements = document.querySelectorAll('.post-index-count')
+  // postElementsはNodeListなので、array.fromで変換し、mapで配列を作成
+  const elementId = Array.from(postElements).map(function(element){
+    // postElementsの要素を順番に取り出し、innerHTMLがidの数字になっていたのでそれを返す
+    return element.innerHTML
+  })
+  // elementIdは、 ['33', '34', '35', '36', '37', '38', '39']こんな感じ
+  // ひとつずつ取り出して、axiosからリクエストを投げて判定して、hiddenクラスを取る
+  elementId.forEach( postId =>{
+    axios.get(`/posts/${postId}/like`)
     .then((response) => {
       const hasLiked = response.data.hasLiked
       if (hasLiked) {
-        $('.active-heart').removeClass('hidden')
+        $(`.active-heart-${postId}`).removeClass('hidden')
       } else {
-        $('.inactive-heart').removeClass('hidden')
+        $(`.inactive-heart-${postId}`).removeClass('hidden')
+        }
+      })
+  })
+
+})
+
+
+$(() => {
+  $(`.active-heart-${post.id}`).on('click', () => {
+    axios.get(`/posts/${post.id}/like`)
+    .then((response) => {
+      const hasLiked = response.data.hasLiked
+      if (hasLiked) {
+        $(`.active-heart-${post.id}`).removeClass('hidden')
+      } else {
+        $(`.inactive-heart-${post.id}`).removeClass('hidden')
       }
     })
+  })
+
 })
+
+
+
+
+// いいねの設定（デイトラ動画）
+// document.addEventListener('DOMContentLoaded', () => {
+//   const dataset = $('#post-get-id').data()
+//   const postId = dataset.postId
+//   axios.get(`/posts/${postId}/like`)
+//   .then((response) => {
+//     const hasLiked = response.data.hasLiked
+//     if (hasLiked) {
+//       $(`.active-heart.post-like-${postId}`).removeClass('hidden')
+//     } else {
+//       $(`.inactive-heart.post-like-${postId}`).removeClass('hidden')
+//       }
+//     })
+// })
 // 
 
 

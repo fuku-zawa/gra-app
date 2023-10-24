@@ -20,6 +20,9 @@
         .post-list-info
           %li
             = post.user.name
+            -# jqueryでpost.idを取得するためのコード　消したらダメ
+            %p{class: "post-index-count hidden"}= post.id
+
           %li.post-list-info-time
             = time_ago_in_words(post.created_at) + " ago"
       
@@ -36,10 +39,10 @@
       
       %ul.post-icon
         %li
-          = link_to post_like_path(post), data: { method: "delete" } do
-            = image_tag "icon/heart.png", class: "hidden active-heart"
-          = link_to post_like_path(post), data: { method: "post" } do
-            = image_tag "icon/nolike.svg", class: "hidden inactive-heart"
+          = link_to post_like_path(post), data: { method: "delete"} do
+            = image_tag "icon/heart.png", class: "hidden active-heart-#{post.id}"
+          = link_to post_like_path(post), data: { method: "post"} do
+            = image_tag "icon/nolike.svg", class: "hidden inactive-heart-#{post.id}"
 
         %li
           = image_tag "icon/comment.svg"
@@ -59,4 +62,3 @@
         = post.mind
 
 
-    
