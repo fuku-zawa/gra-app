@@ -15,6 +15,7 @@
 class Post < ApplicationRecord
   has_many_attached :photos
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :user
   
   def likes_count
