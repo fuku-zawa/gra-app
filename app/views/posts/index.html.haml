@@ -13,13 +13,16 @@
 
 .container
   - @posts.each do |post|
-    .post
+    .post#post-get-id{data: {post_id: post.id}}
       %ul.post-list
         %li.post-list-avatar
           = image_tag post.user.avatar || "default-avatar.png"
         .post-list-info
           %li
             = post.user.name
+            -# jqueryでpost.idを取得するためのコード　消したらダメ
+            %p{class: "post-index-count hidden"}= post.id
+
           %li.post-list-info-time
             = time_ago_in_words(post.created_at) + " ago"
       
@@ -36,12 +39,9 @@
       
       %ul.post-icon
         %li
-          - if current_user.has_liked(post)
-            = link_to post_like_path(post), data: { method: "delete" } do
-              = image_tag "icon/heart.png"
-          - else
-            = link_to post_like_path(post), data: { method: "post" } do
-              = image_tag "icon/nolike.svg"
+          = image_tag "icon/heart.png", class: "hidden active-heart-#{post.id}"
+          = image_tag "icon/nolike.svg", class: "hidden inactive-heart-#{post.id}"
+
         %li
           = image_tag "icon/comment.svg"
         %li
@@ -60,4 +60,3 @@
         = post.mind
 
 
-    
