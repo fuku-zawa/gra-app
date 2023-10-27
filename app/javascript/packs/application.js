@@ -19,8 +19,11 @@ require("channels")
 import $ from 'jquery'
 import axios from 'axios'
 
+import {csrfToken} from "rails-ujs"
+axios.defaults.headers.common["X-CSRF-Token"] = csrfToken()
 
 
+// いいね機能
 document.addEventListener('DOMContentLoaded', () => {
   // .post-index-countがついた要素をすべて取得
   const postElements = document.querySelectorAll('.post-index-count')
@@ -33,19 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ひとつずつ取り出して、axiosからリクエストを投げて判定して、hiddenクラスを取る
   elementId.forEach( postId =>{
     axios.get(`/posts/${postId}/like`)
-    .then((response) => {
-      const hasLiked = response.data.hasLiked
-      if (hasLiked) {
-        $(`.active-heart-${postId}`).removeClass('hidden')
-      } else {
-        $(`.inactive-heart-${postId}`).removeClass('hidden')
-        }
-      })
-  })
-
-  elementId.forEach( postId =>{
-    $(`.active-heart-${postId}`).on('click', () => {
-      axios.get(`/posts/${postId}/like`)
       .then((response) => {
         const hasLiked = response.data.hasLiked
         if (hasLiked) {
@@ -54,23 +44,47 @@ document.addEventListener('DOMContentLoaded', () => {
           $(`.inactive-heart-${postId}`).removeClass('hidden')
         }
       })
+  })
+
+  elementId.forEach( postId =>{
+    $(`.active-heart-${postId}`).on('click', () => {
+      axios.get(`/posts/${postId}/like`)
+        .then((response) => {
+          const hasLiked = response.data.hasLiked
+          if (hasLiked) {
+            $(`.active-heart-${postId}`).removeClass('hidden')
+          } else {
+            $(`.inactive-heart-${postId}`).removeClass('hidden')
+          }
+        })
     })
+  
     
     $(`.active-heart-${postId}`).on('click', () => {
       axios.delete(`/posts/${postId}/like`)
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((e) => {
-        window.alert('error')
+        .then((response) => {
+          if (response.data.status === 'ok' ) {
+            $(`.active-heart-${postId}`).addClass('hidden')
+            $(`.inactive-heart-${postId}`).removeClass('hidden')
+          }
       })
     })
+
+    $(`.inactive-heart-${postId}`).on('click', () => {
+      axios.post(`/posts/${postId}/like`)
+        .then((response) => {
+          if (response.data.status === 'ok' ) {
+            $(`.active-heart-${postId}`).removeClass('hidden')
+            $(`.inactive-heart-${postId}`).addClass('hidden')
+          }
+        })
+    })
   })
+
 })
 
 
-
-
+// 新規投稿関係
 $(() => {
 
   $('.edit-profile-avatar').on('click', () => {
