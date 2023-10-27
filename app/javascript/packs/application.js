@@ -43,42 +43,32 @@ document.addEventListener('DOMContentLoaded', () => {
       })
   })
 
-})
-
-
-$(() => {
-  $(`.active-heart-${post.id}`).on('click', () => {
-    axios.get(`/posts/${post.id}/like`)
-    .then((response) => {
-      const hasLiked = response.data.hasLiked
-      if (hasLiked) {
-        $(`.active-heart-${post.id}`).removeClass('hidden')
-      } else {
-        $(`.inactive-heart-${post.id}`).removeClass('hidden')
-      }
+  elementId.forEach( postId =>{
+    $(`.active-heart-${postId}`).on('click', () => {
+      axios.get(`/posts/${postId}/like`)
+      .then((response) => {
+        const hasLiked = response.data.hasLiked
+        if (hasLiked) {
+          $(`.active-heart-${postId}`).removeClass('hidden')
+        } else {
+          $(`.inactive-heart-${postId}`).removeClass('hidden')
+        }
+      })
+    })
+    
+    $(`.active-heart-${postId}`).on('click', () => {
+      axios.delete(`/posts/${postId}/like`)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((e) => {
+        window.alert('error')
+      })
     })
   })
-
 })
 
 
-
-
-// いいねの設定（デイトラ動画）
-// document.addEventListener('DOMContentLoaded', () => {
-//   const dataset = $('#post-get-id').data()
-//   const postId = dataset.postId
-//   axios.get(`/posts/${postId}/like`)
-//   .then((response) => {
-//     const hasLiked = response.data.hasLiked
-//     if (hasLiked) {
-//       $(`.active-heart.post-like-${postId}`).removeClass('hidden')
-//     } else {
-//       $(`.inactive-heart.post-like-${postId}`).removeClass('hidden')
-//       }
-//     })
-// })
-// 
 
 
 $(() => {

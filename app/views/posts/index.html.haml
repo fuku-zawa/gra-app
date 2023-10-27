@@ -39,10 +39,8 @@
       
       %ul.post-icon
         %li
-          = link_to post_like_path(post), data: { method: "delete"} do
-            = image_tag "icon/heart.png", class: "hidden active-heart-#{post.id}"
-          = link_to post_like_path(post), data: { method: "post"} do
-            = image_tag "icon/nolike.svg", class: "hidden inactive-heart-#{post.id}"
+          = image_tag "icon/heart.png", class: "hidden active-heart-#{post.id}"
+          = image_tag "icon/nolike.svg", class: "hidden inactive-heart-#{post.id}"
 
         %li
           = image_tag "icon/comment.svg"
