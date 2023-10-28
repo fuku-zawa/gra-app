@@ -38,6 +38,7 @@ gem "binding_of_caller"
 gem "annotate"
 gem "image_processing"
 gem "mini_magick"
+gem "active_model_serializers"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
