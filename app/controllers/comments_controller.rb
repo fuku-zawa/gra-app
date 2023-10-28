@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  def index
+    post = Post.find(params[:post_id])
+    comments = post.comments
+  end
+  
   def new
     # postを取得（コメントをしたい投稿のidをパラメータから取得）
     @post = Post.find(params[:post_id])
