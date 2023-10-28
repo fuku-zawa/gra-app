@@ -43,7 +43,9 @@
           = image_tag "icon/nolike.svg", class: "hidden inactive-heart-#{post.id}"
 
         %li
-          = image_tag "icon/comment.svg"
+          -# ヘルパーに、@postを渡せばいいが、each文なのでpostにする
+          = link_to new_post_comment_path(post) do
+            = image_tag "icon/comment.svg"
         %li
           = link_to "https://twitter.com/share?url=#{posts_path(post.id)}&text=【test】%0a%0a#{post.mind}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do
             = image_tag "icon/share.svg"
