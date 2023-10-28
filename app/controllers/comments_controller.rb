@@ -6,4 +6,20 @@ class CommentsController < ApplicationController
     @comment = post.comments.build
   end
 
+  def create
+    post = Post.find(params[:post_id])
+    @comment = post.comments.build(comment_params)
+    if @comment.save
+      redirect_to new_post_comment_path(post), notice: "コメント追加"
+    else
+      flash.now[:error] = "保存できませんでした"
+      render :new
+    end
+  end
+
+  private
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+
 end
