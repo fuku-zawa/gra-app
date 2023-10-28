@@ -1,1 +1,8 @@
-Comment
+.container
+  = form_with(model: @comment, url: post_comments_path(@comment.post), local: true) do |f|
+    %div
+      = f.label :content, "内容"
+    %div
+      = f.text_area :content
+    
+    = f.submit "保存"
