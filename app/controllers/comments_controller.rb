@@ -1,9 +1,12 @@
 class CommentsController < ApplicationController
   def new
     # postを取得（コメントをしたい投稿のidをパラメータから取得）
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     # ↑のpostから空のオブジェクトを作成→form_withからcreateアクションに送られる
-    @comment = post.comments.build
+    @comment = @post.comments.build
+    # コメント表示用に@comments
+    # @comments = @post.comments
+    @comments = @post.comments.order(created_at: :asc)
   end
 
   def create

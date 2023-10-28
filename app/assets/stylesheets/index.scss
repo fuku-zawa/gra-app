@@ -1,6 +1,6 @@
 .post {
 }
-.post-list {
+.post-list,.comments-list {
   display: flex;
 }
 .post-list-avatar {
@@ -11,7 +11,7 @@
   margin-left: 10px;
   font-size: 14px;
 }
-.post-list-info-time {
+.post-list-info-time,.comments-content {
   color: #9E9E9E;
   font-size: 12px;
 }
@@ -31,4 +31,22 @@
 }
 .post-mind {
   font-size: 12px;
+}
+.comments-content{
+  font-size: 14px;
+}
+
+// comments/new
+.comments {
+  margin-top: 50px;
+}
+.comments-list {
+  margin-bottom: 30px;
+  li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  p {
+    max-width: 300px;
+  }
 }
