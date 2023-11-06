@@ -7,8 +7,8 @@
       =image_tag "status/B-Wifi.svg", class: "status-bar-item"
       =image_tag "status/B-Battery.svg", class: "status-bar-item"
 
-
-.container
+-# id="post-id"  data-post-id="33"
+.container#post-id{data: {post_id: @post.id, avatar: @comment_avatar}}
   = form_with(model: @comment, url: post_comments_path(@post), local: true) do |f|
     .profile-edit-top
     .profile-edit-top-back
@@ -17,15 +17,8 @@
     .profile-edit-top-username
       Comment
     
-    .comments
-      - @comments.each do |comment|
-        %ul.post-list.comments-list
-          %li.post-list-avatar
-            = image_tag @post.user.avatar || "default-avatar.png"
-          .post-list-info
-            %li
-              = @post.user.name
-            %p.comments-content=  comment.content
+    .comments#comments-block
+  
     
     %div
       = f.label :content, "内容"
@@ -35,3 +28,5 @@
     = f.submit "保存"
 
 
+- @comment_avatar.each do |avatar|
+  = image_tag avatar,class:"hidden-class-img hidden"

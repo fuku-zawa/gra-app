@@ -1,18 +1,32 @@
 class CommentsController < ApplicationController
-  def index
-    post = Post.find(params[:post_id])
-    comments = post.comments
-    render json: comments
-  end
   
+  # API
+  # post_idを指定してindexにgetリクエストを送る
+  def index
+    # URLのidの投稿をpostに代入
+    post = Post.find(params[:post_id])
+    # その投稿のコメントをcommentsに（リスト）
+    comments = post.comments
+
+    render json: comments
+
+  end
+
+
+  # ビュー
   def new
     # postを取得（コメントをしたい投稿のidをパラメータから取得）
     @post = Post.find(params[:post_id])
     # ↑のpostから空のオブジェクトを作成→form_withからcreateアクションに送られる
     @comment = @post.comments.build
-    # コメント表示用に@comments
-    # @comments = @post.comments
+    # コメント表示用に@comments　※並び変えるとデータ形式が変わって、末尾のデータがなくなる
     @comments = @post.comments.order(created_at: :asc)
+    # コメントのユーザ名を取得
+    # @user_names = @comments.map { |comment| comment.post.user.name }
+    # @user_avatar = @comments.map { |comment| comment.post.user.avatar}
+    @post_comment = @post.comments.where(post_id:params[:post_id])
+    @comment_avatar = @post_comment.map {|comment| comment.post.user.avatar }
+    # @post_avatar =  @post_comment.user.avatar
   end
 
   def create

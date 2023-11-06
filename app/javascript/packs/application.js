@@ -23,8 +23,8 @@ import {csrfToken} from "rails-ujs"
 axios.defaults.headers.common["X-CSRF-Token"] = csrfToken()
 
 
-// いいね機能
 document.addEventListener('DOMContentLoaded', () => {
+  // いいね機能
   // .post-index-countがついた要素をすべて取得
   const postElements = document.querySelectorAll('.post-index-count')
   // postElementsはNodeListなので、array.fromで変換し、mapで配列を作成
@@ -80,6 +80,49 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
   })
+  
+
+  // コメントの表示→new.htmlのcomments-blockクラスに表示
+  const dataset = $('#post-id').data()
+  const postIdComment = dataset.postId
+
+  // new.htmlからavatarを取得
+  const avatarsClassName = document.getElementsByClassName("hidden-class-img")
+  const avatars = []
+  for (let i = 0; i < avatarsClassName.length; i++) {
+    const avatarSrc = avatarsClassName[i].getAttribute("src")
+    avatars.push(avatarSrc)
+  }
+
+  axios.get(`/posts/${postIdComment}/comments`)
+    .then((response) => {
+      // debugger
+      const comments = response.data.map((data) => data.content)
+      const names = response.data.map((data) => data.user_name)
+      const commentsProfile = comments.map((comment, index) => [comment, names[index], avatars[index]])
+      commentsProfile.forEach((profile) => {
+        const comment = profile[0]
+        const name = profile[1]
+        const avatar = profile[2]
+        const newComment = document.createElement('div')
+        newComment.innerHTML = `
+          <ul class="post-list comments-list">
+            <li class="avatars-content">
+              <img src="${avatar}">
+            </li>
+            <div class="post-list-info">
+              <li class="names-content">
+                ${name}
+              </li>
+              <p>${comment}</p>
+            </div>
+          </ul>
+        `
+        const container = document.getElementById('comments-block')
+        container.appendChild(newComment)
+      })
+  })
+
 
 })
 
@@ -139,3 +182,5 @@ $(() => {
   })
 
 })
+
+

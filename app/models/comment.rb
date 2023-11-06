@@ -14,5 +14,7 @@
 #
 class Comment < ApplicationRecord
   belongs_to :post
+  belongs_to :user
+  # delegate :user, to: :post
   validates :content, presence: true
 end
