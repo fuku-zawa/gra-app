@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   axios.get(`/posts/${postIdComment}/comments`)
     .then((response) => {
-      // debugger
       const comments = response.data.map((data) => data.content)
       const names = response.data.map((data) => data.user_name)
       const commentsProfile = comments.map((comment, index) => [comment, names[index], avatars[index]])

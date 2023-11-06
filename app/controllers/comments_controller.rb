@@ -24,7 +24,10 @@ class CommentsController < ApplicationController
     # コメントのユーザ名を取得
     # @user_names = @comments.map { |comment| comment.post.user.name }
     # @user_avatar = @comments.map { |comment| comment.post.user.avatar}
-    @post_comment = @post.comments.where(post_id:params[:post_id])
+    
+    # @post.commentsで、コメントを取得できれば↓は不要
+    # @post_comment = @post.comments.where(post_id:params[:post_id])
+    @post_comment = @post.comments
     @comment_avatar = @post_comment.map {|comment| comment.post.user.avatar }
     # @post_avatar =  @post_comment.user.avatar
   end
