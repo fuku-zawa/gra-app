@@ -24,12 +24,12 @@ class CommentSerializer < ActiveModel::Serializer
 
   def user_name
     # Comment.last.post.user.nameでnameを取得できる→postのユーザー名になっている
-    object.post.user.name
+    object.user.name
 
   end
 
   def user_avatar
-    object.post.user.profile.avatar
+    object.user.avatar
   end
 
   

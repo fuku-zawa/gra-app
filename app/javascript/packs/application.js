@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newComment.innerHTML = `
           <ul class="post-list comments-list">
             <li class="avatars-content">
-              <img src="${avatar}">
+              <img src="${avatar}" class="avatars-comment">
             </li>
             <div class="post-list-info">
               <li class="names-content">

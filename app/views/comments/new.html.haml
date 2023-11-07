@@ -9,7 +9,7 @@
 
 -# id="post-id"  data-post-id="33"
 .container#post-id{data: {post_id: @post.id, avatar: @comment_avatar}}
-  = form_with(model: @comment, url: post_comments_path(@post), local: true) do |f|
+  = form_with(model: @post_comment, url: post_comments_path(@post), local: true) do |f|
     .profile-edit-top
     .profile-edit-top-back
       = link_to :back do

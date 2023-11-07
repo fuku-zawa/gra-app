@@ -59,4 +59,7 @@
 }
 .comments-list p {
   max-width: 300px;
+}
+.comments-list .avatars-comment {
+  max-width: 40px;
 }/*# sourceMappingURL=index.css.map */
