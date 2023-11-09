@@ -80,9 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
   })
-  
+})
 
-  // コメントの表示→new.htmlのcomments-blockクラスに表示
+// コメントの表示→new.htmlのcomments-blockクラスに表示
+document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#post-id').data()
   const postIdComment = dataset.postId
 
@@ -98,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((response) => {
       const comments = response.data.map((data) => data.content)
       const names = response.data.map((data) => data.user_name)
+      
       const commentsProfile = comments.map((comment, index) => [comment, names[index], avatars[index]])
       commentsProfile.forEach((profile) => {
         const comment = profile[0]
@@ -113,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <li class="names-content">
                 ${name}
               </li>
-              <p>${comment}</p>
+              <p class="comment-content">${comment}</p>
             </div>
           </ul>
         `
@@ -122,8 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
       })
   })
 
+  // コメントの投稿
 
+  $('.add-comment-button').on("click", () => {
+    const content = $('#comment_content').val()
+    if (!content) {
+      window.alert('コメントを入力してください')
+    } else {
+      // ストロングパラメータがあるので、第2引数に送信の形を指定する
+      axios.post(`/posts/${postIdComment}/comments`, {comment: {content: content}} )
+        .then((res) => {
+          const commentRes = res.data
+          $('.comments-content').append(`${commentRes.content}`)
+          $('#comment_content').val('')
+        })
+    }
+  })
 })
+
 
 
 // 新規投稿関係

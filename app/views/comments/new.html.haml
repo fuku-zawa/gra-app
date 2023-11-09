@@ -9,8 +9,8 @@
 
 -# id="post-id"  data-post-id="33"
 .container#post-id{data: {post_id: @post.id, avatar: @comment_avatar}}
-  = form_with(model: @post_comment, url: post_comments_path(@post), local: true) do |f|
-    .profile-edit-top
+
+  .profile-edit-top
     .profile-edit-top-back
       = link_to :back do
         = image_tag "status/Tabs.svg"
@@ -18,15 +18,12 @@
       Comment
     
     .comments#comments-block
-  
-    
-    %div
-      = f.label :content, "内容"
-    %div
-      = f.text_area :content
-    
-    = f.submit "保存"
 
+  -# <textarea name="comment_content" id="comment_content"></textarea>
+  = text_area_tag "comment_content"
+      
+  -# <input type="submit" name="commit" value="保存" class="add-comment-button" data-disable-with="保存">
+  = submit_tag "保存",class: "add-comment-button"
 
 - @comment_avatar.each do |avatar|
   = image_tag avatar,class:"hidden-class-img hidden"
