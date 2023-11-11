@@ -86,7 +86,7 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:load', () => {
   const dataset = $('#post-id').data()
   const postIdComment = dataset.postId
-  
+
   // new.htmlからavatarを取得
   const avatarsClassName = document.getElementsByClassName("hidden-class-img")
   const avatars = []
@@ -101,6 +101,7 @@ document.addEventListener('turbolinks:load', () => {
       const names = response.data.map((data) => data.user_name)
       
       const commentsProfile = comments.map((comment, index) => [comment, names[index], avatars[index]])
+     
       commentsProfile.forEach((profile) => {
         const comment = profile[0]
         const name = profile[1]
@@ -135,13 +136,33 @@ document.addEventListener('turbolinks:load', () => {
       axios.post(`/posts/${postIdComment}/comments`, {comment: {content: content}} )
         .then((res) => {
           const commentRes = res.data
-          $('.comments-content').append(`${commentRes.content}`)
+          // const resJsonUrl = JSON.parse(res)
+
+          // コメント投稿者のアバターをnew.htmlから取得
+          const addCommentAvatar = document.getElementsByClassName("hidden-class-avatar")
+          const addCommentAvatarUrl = addCommentAvatar[0].getAttribute("src")
+          
+          // 既存コメントの後に追加する
+          const addComment = document.createElement('div')
+          addComment.innerHTML = `
+            <ul class="post-list comments-list">
+              <li class="avatars-content">
+                <img src="${addCommentAvatarUrl}" class="avatars-comment">
+              </li>
+              <div class="post-list-info">
+                <li class="names-content">
+                  ${commentRes.user_name}
+                </li>
+                <p class="comment-content">${commentRes.content}</p>
+              </div>
+            </ul>`
+          const addCommentContainer = document.getElementById('comments-block')
+          addCommentContainer.appendChild(addComment)
           $('#comment_content').val('')
         })
     }
   })
 })
-
 
 
 // 新規投稿関係

@@ -29,26 +29,29 @@ class CommentsController < ApplicationController
     # @post_comment = @post.comments.where(post_id:params[:post_id])
     @post_comment = @post.comments
     @comment_avatar = @post.comments.map {|comment| comment.user.avatar }
+
+    # コメント投稿時のユーザのアバターを取得する
+    @add_comment_avatar = current_user.avatar 
     
   end
 
   # API
   def create
-    @post = Post.find(params[:post_id])
+    post = Post.find(params[:post_id])
     
-    @comment = @post.comments.build(comment_params)
+    comment = post.comments.build(comment_params)
 
     # user_idを渡すようにする
-    @comment.user_id = current_user.id
+    comment.user_id = current_user.id
     
     # JSでコメントの保存をするので、saveだけ
-    @comment.save!
+    comment.save!
 
-    render json: @comment
+    render json: comment
   end
 
 
-  
+
   private
   def comment_params
     params.require(:comment).permit(:content)

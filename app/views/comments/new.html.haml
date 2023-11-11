@@ -18,6 +18,19 @@
       Comment
     
     .comments#comments-block
+      -# これが挿入される
+      -#  <ul class="post-list comments-list">
+            <li class="avatars-content">
+              <img src="${avatar}" class="avatars-comment">
+            </li>
+            <div class="post-list-info">
+              <li class="names-content">
+                ${name}
+              </li>
+              <p class="comment-content">${comment}</p>
+            </div>
+          </ul>
+
 
   -# <textarea name="comment_content" id="comment_content"></textarea>
   = text_area_tag "comment_content"
@@ -27,3 +40,6 @@
 
 - @comment_avatar.each do |avatar|
   = image_tag avatar,class:"hidden-class-img hidden"
+
+-# コメント投稿者のアバターを取得するためのコード
+= image_tag @add_comment_avatar ,class:"hidden-class-avatar hidden" 
