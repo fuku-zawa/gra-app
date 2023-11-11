@@ -1,4 +1,4 @@
-.post-list {
+.post-list, .comments-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,7 +14,7 @@
   font-size: 14px;
 }
 
-.post-list-info-time {
+.post-list-info-time, .comments-content {
   color: #9E9E9E;
   font-size: 12px;
 }
@@ -40,4 +40,26 @@
 
 .post-mind {
   font-size: 12px;
+}
+
+.comments-content {
+  font-size: 14px;
+}
+
+.comments {
+  margin-top: 50px;
+}
+
+.comments-list {
+  margin-bottom: 30px;
+}
+.comments-list li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.comments-list p {
+  max-width: 300px;
+}
+.comments-list .avatars-comment {
+  max-width: 40px;
 }/*# sourceMappingURL=index.css.map */

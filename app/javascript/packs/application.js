@@ -23,8 +23,8 @@ import {csrfToken} from "rails-ujs"
 axios.defaults.headers.common["X-CSRF-Token"] = csrfToken()
 
 
-// いいね機能
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
+  // いいね機能
   // .post-index-countがついた要素をすべて取得
   const postElements = document.querySelectorAll('.post-index-count')
   // postElementsはNodeListなので、array.fromで変換し、mapで配列を作成
@@ -34,53 +34,134 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   // elementIdは、 ['33', '34', '35', '36', '37', '38', '39']こんな感じ
   // ひとつずつ取り出して、axiosからリクエストを投げて判定して、hiddenクラスを取る
-  elementId.forEach( postId =>{
-    axios.get(`/posts/${postId}/like`)
+  elementId.forEach( elePostId =>{
+    axios.get(`/posts/${elePostId}/like`)
       .then((response) => {
         const hasLiked = response.data.hasLiked
         if (hasLiked) {
-          $(`.active-heart-${postId}`).removeClass('hidden')
+          $(`.active-heart-${elePostId}`).removeClass('hidden')
         } else {
-          $(`.inactive-heart-${postId}`).removeClass('hidden')
+          $(`.inactive-heart-${elePostId}`).removeClass('hidden')
         }
       })
   })
 
-  elementId.forEach( postId =>{
-    $(`.active-heart-${postId}`).on('click', () => {
-      axios.get(`/posts/${postId}/like`)
+  elementId.forEach( elePostId =>{
+    $(`.active-heart-${elePostId}`).on('click', () => {
+      axios.get(`/posts/${elePostId}/like`)
         .then((response) => {
           const hasLiked = response.data.hasLiked
           if (hasLiked) {
-            $(`.active-heart-${postId}`).removeClass('hidden')
+            $(`.active-heart-${elePostId}`).removeClass('hidden')
           } else {
-            $(`.inactive-heart-${postId}`).removeClass('hidden')
+            $(`.inactive-heart-${elePostId}`).removeClass('hidden')
           }
         })
     })
   
     
-    $(`.active-heart-${postId}`).on('click', () => {
-      axios.delete(`/posts/${postId}/like`)
+    $(`.active-heart-${elePostId}`).on('click', () => {
+      axios.delete(`/posts/${elePostId}/like`)
         .then((response) => {
           if (response.data.status === 'ok' ) {
-            $(`.active-heart-${postId}`).addClass('hidden')
-            $(`.inactive-heart-${postId}`).removeClass('hidden')
+            $(`.active-heart-${elePostId}`).addClass('hidden')
+            $(`.inactive-heart-${elePostId}`).removeClass('hidden')
           }
       })
     })
 
-    $(`.inactive-heart-${postId}`).on('click', () => {
-      axios.post(`/posts/${postId}/like`)
+    $(`.inactive-heart-${elePostId}`).on('click', () => {
+      axios.post(`/posts/${elePostId}/like`)
         .then((response) => {
           if (response.data.status === 'ok' ) {
-            $(`.active-heart-${postId}`).removeClass('hidden')
-            $(`.inactive-heart-${postId}`).addClass('hidden')
+            $(`.active-heart-${elePostId}`).removeClass('hidden')
+            $(`.inactive-heart-${elePostId}`).addClass('hidden')
           }
         })
     })
   })
+})
 
+// コメントの表示→new.htmlのcomments-blockクラスに表示
+document.addEventListener('turbolinks:load', () => {
+  const dataset = $('#post-id').data()
+  const postIdComment = dataset.postId
+
+  // new.htmlからavatarを取得
+  const avatarsClassName = document.getElementsByClassName("hidden-class-img")
+  const avatars = []
+  for (let i = 0; i < avatarsClassName.length; i++) {
+    const avatarSrc = avatarsClassName[i].getAttribute("src")
+    avatars.push(avatarSrc)
+  }
+
+  axios.get(`/posts/${postIdComment}/comments`)
+    .then((response) => {
+      const comments = response.data.map((data) => data.content)
+      const names = response.data.map((data) => data.user_name)
+      
+      const commentsProfile = comments.map((comment, index) => [comment, names[index], avatars[index]])
+     
+      commentsProfile.forEach((profile) => {
+        const comment = profile[0]
+        const name = profile[1]
+        const avatar = profile[2]
+        const newComment = document.createElement('div')
+        newComment.innerHTML = `
+          <ul class="post-list comments-list">
+            <li class="avatars-content">
+              <img src="${avatar}" class="avatars-comment">
+            </li>
+            <div class="post-list-info">
+              <li class="names-content">
+                ${name}
+              </li>
+              <p class="comment-content">${comment}</p>
+            </div>
+          </ul>
+        `
+        const container = document.getElementById('comments-block')
+        container.appendChild(newComment)
+      })
+  })
+
+  // コメントの投稿
+
+  $('.add-comment-button').on("click", () => {
+    const content = $('#comment_content').val()
+    if (!content) {
+      window.alert('コメントを入力してください')
+    } else {
+      // ストロングパラメータがあるので、第2引数に送信の形を指定する
+      axios.post(`/posts/${postIdComment}/comments`, {comment: {content: content}} )
+        .then((res) => {
+          const commentRes = res.data
+          // const resJsonUrl = JSON.parse(res)
+
+          // コメント投稿者のアバターをnew.htmlから取得
+          const addCommentAvatar = document.getElementsByClassName("hidden-class-avatar")
+          const addCommentAvatarUrl = addCommentAvatar[0].getAttribute("src")
+          
+          // 既存コメントの後に追加する
+          const addComment = document.createElement('div')
+          addComment.innerHTML = `
+            <ul class="post-list comments-list">
+              <li class="avatars-content">
+                <img src="${addCommentAvatarUrl}" class="avatars-comment">
+              </li>
+              <div class="post-list-info">
+                <li class="names-content">
+                  ${commentRes.user_name}
+                </li>
+                <p class="comment-content">${commentRes.content}</p>
+              </div>
+            </ul>`
+          const addCommentContainer = document.getElementById('comments-block')
+          addCommentContainer.appendChild(addComment)
+          $('#comment_content').val('')
+        })
+    }
+  })
 })
 
 
@@ -139,3 +220,5 @@ $(() => {
   })
 
 })
+
+

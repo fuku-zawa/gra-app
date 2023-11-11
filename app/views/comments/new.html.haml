@@ -1,0 +1,45 @@
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+-# id="post-id"  data-post-id="33"
+.container#post-id{data: {post_id: @post.id, avatar: @comment_avatar}}
+
+  .profile-edit-top
+    .profile-edit-top-back
+      = link_to :back do
+        = image_tag "status/Tabs.svg"
+    .profile-edit-top-username
+      Comment
+    
+    .comments#comments-block
+      -# これが挿入される
+      -#  <ul class="post-list comments-list">
+            <li class="avatars-content">
+              <img src="${avatar}" class="avatars-comment">
+            </li>
+            <div class="post-list-info">
+              <li class="names-content">
+                ${name}
+              </li>
+              <p class="comment-content">${comment}</p>
+            </div>
+          </ul>
+
+
+  -# <textarea name="comment_content" id="comment_content"></textarea>
+  = text_area_tag "comment_content"
+      
+  -# <input type="submit" name="commit" value="保存" class="add-comment-button" data-disable-with="保存">
+  = submit_tag "保存",class: "add-comment-button"
+
+- @comment_avatar.each do |avatar|
+  = image_tag avatar,class:"hidden-class-img hidden"
+
+-# コメント投稿者のアバターを取得するためのコード
+= image_tag @add_comment_avatar ,class:"hidden-class-avatar hidden" 
