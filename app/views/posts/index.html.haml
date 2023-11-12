@@ -16,7 +16,13 @@
     .post#post-get-id{data: {post_id: post.id}}
       %ul.post-list
         %li.post-list-avatar
-          = image_tag post.user.avatar || "default-avatar.png"
+          -# 自分のアバターをクリックしたらプロフィールページにとぶ
+          - if  post.user.id == @current_user.id
+            = link_to profile_path do
+              = image_tag post.user.avatar || "default-avatar.png"
+          - else
+            = link_to account_path(post.user) do
+              = image_tag post.user.avatar || "default-avatar.png"
         .post-list-info
           %li
             = post.user.name
