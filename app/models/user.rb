@@ -54,5 +54,17 @@ class User < ApplicationRecord
     likes.exists?(post_id: post.id)
   end
 
+  # フォロー機能
+  def follow!(user)
+    following_relationships.create!(following_id: user.id)
+  end
+
+  # フォローを外す機能
+  def unfollow!(user)
+    # フォローしている人は見つかるはずなのでfind_by!
+    following_relationships.find_by!(following_id: user.id)
+    relation.destroy!
+  end
+
 
 end
