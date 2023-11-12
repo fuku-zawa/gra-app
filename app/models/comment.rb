@@ -44,7 +44,7 @@ class Comment < ApplicationRecord
     all_user_info = User.pluck(:name, :email)
     all_user_info.each do |name, email|
         if (content.include?("@#{name}"))
-          CommentMailer.new_comment(name,email,self).deliver_now
+          CommentMailer.new_comment(name,email,self).deliver_later
         end
       end
 
