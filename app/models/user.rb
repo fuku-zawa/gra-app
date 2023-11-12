@@ -28,6 +28,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   
   has_many :comments, dependent: :destroy
+
+  
   
 
   delegate :birthday, :introduction, :gender, :avatar, to: :profile, allow_nil: true
