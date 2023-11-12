@@ -16,5 +16,7 @@ module GraApp
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     ActiveStorage::Engine.config.active_storage.content_types_to_serve_as_binary.delete('image/svg+xml')
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
