@@ -17,7 +17,7 @@
     .profile-top-username
       = @user.name
     .profile-top-edit.follow-button
-      Follow
+      = link_to 'Follow', account_follows_path(@user), data: {method: 'post'}
 
   .profile-avatar.show-profile-avatar
     - if @user.avatar.attached?
