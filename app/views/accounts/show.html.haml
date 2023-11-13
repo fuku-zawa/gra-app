@@ -16,8 +16,8 @@
         = image_tag "status/Tabs.svg"
     .profile-top-username
       = @user.name
-    .profile-top-edit
-      = link_to "follow", "#"
+    .profile-top-edit.follow-button
+      Follow
 
   .profile-avatar.show-profile-avatar
     - if @user.avatar.attached?
