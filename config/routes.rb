@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     resources :comments, only:[:index, :new, :create]
   end
 
-  resources :accounts, only:[:show]
+  # userはdeviseが使用しているのでaccountに
+  resources :accounts, only:[:show] do
+    # accounts/:account_id/followsのPOSTでフォローの関係をつくる
+    resources :follows, only:[:create]
+  end
 
   resource :profile, only:[:show, :edit, :update]
 end
