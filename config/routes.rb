@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :accounts, only:[:show] do
     # accounts/:account_id/followsのPOSTでフォローの関係をつくる
     resources :follows, only:[:create]
+    # follows#destroyではなく、unfollows#createにする
+    resources :unfollows, only:[:create]
   end
 
   resource :profile, only:[:show, :edit, :update]
