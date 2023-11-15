@@ -42,6 +42,6 @@
   display: none;
 }
 
-.follow-button {
+.follow-button, .unfollow-button {
   color: #9E9E9E;
 }/*# sourceMappingURL=button.css.map */

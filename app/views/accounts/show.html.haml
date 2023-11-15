@@ -10,18 +10,15 @@
 
 
 .container
-  .profile-top
+  .profile-top#follow-button-id{data: {follow_button_id: @user.id}}
     .profile-top-back
       = link_to :back do
         = image_tag "status/Tabs.svg"
     .profile-top-username
       = @user.name
-    .profile-top-edit.follow-button
-      - if @user != current_user
-        - if current_user&.has_followed?(@user)
-          = link_to 'Unfollow', account_unfollows_path(@user), data: {method: 'post'}
-        - else
-          = link_to 'Follow', account_follows_path(@user), data: {method: 'post'}
+    .profile-top-edit
+      %p.unfollow-button.hidden Unfollow
+      %p.follow-button.hidden Follow
 
   .profile-avatar.show-profile-avatar
     - if @user.avatar.attached?

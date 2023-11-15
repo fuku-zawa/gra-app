@@ -222,3 +222,42 @@ $(() => {
 })
 
 
+// フォロー・アンフォロー
+document.addEventListener('turbolinks:load', () => {
+  const dataset = $('#follow-button-id').data()
+  const accountId = dataset.followButtonId
+  // フォローしているかどうかを取得してボタンの表示を切り替え
+  axios.get(`/accounts/${accountId}/follows`)
+  .then((response) => {
+    // responseにあるhasFollowedのtrue・falseでボタンの切り替え
+      const hasFollowed = response.data.hasFollowed
+      if (hasFollowed) {
+        $(`.unfollow-button`).removeClass('hidden')
+      } else {
+        $(`.follow-button`).removeClass('hidden')
+      }
+    })
+
+  //フォローボタンをクリックしたらunfollowを表示する 
+  $('.follow-button').on("click", () => {
+    axios.post(`/accounts/${accountId}/follows`)
+    .then((response) => {
+      if (response.data.status === 'ok' ) {
+        $(`.follow-button`).addClass('hidden')
+        $(`.unfollow-button`).removeClass('hidden')
+      }
+    })
+  })
+
+  // アンフォローボタンをクリックしたらfollowを表示する
+  $('.unfollow-button').on("click", () => {
+    axios.post(`/accounts/${accountId}/unfollows`)
+    .then((response) => {
+      if (response.data.status === 'ok' ) {
+        $(`.follow-button`).removeClass('hidden')
+        $(`.unfollow-button`).addClass('hidden')
+      }
+    })
+  })
+
+})
