@@ -3,6 +3,8 @@
     .status-bar-left
       =image_tag "status/B-Time Style.svg"
     .status-bar-right
+      - if user_signed_in?
+        = link_to "ログアウト", destroy_user_session_path, data: {method: "delete"}
       =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
       =image_tag "status/B-Wifi.svg", class: "status-bar-item"
       =image_tag "status/B-Battery.svg", class: "status-bar-item"
