@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+  before_action :authenticate_user!
   # API
   # post_idを指定してindexにgetリクエストを送る
   def index
