@@ -38,11 +38,15 @@
       %dt= current_user.posts.length
       %dd Posts
     %dl.post-follower
-      %dt= 44
-      %dd Followers
+      %dt= @followers
+      %dd 
+        = link_to account_followers_path(@user.id) do
+          Followers
     %dl.post-following
-      %dt= 44
-      %dd Followings
+      %dt= @followings
+      %dd
+        = link_to account_followings_path(@user.id) do  
+          Followings
 
   .profile-post
     %ul.profile-post-list
