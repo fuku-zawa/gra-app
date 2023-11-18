@@ -3,9 +3,12 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = current_user.prepare_profile
+    @user = current_user
     @user_name = current_user.name
     @posts = current_user.posts
-      
+    @followers = current_user.followers.length
+    @followings = current_user.followings.length
+
     @list = []
     post_list
   end

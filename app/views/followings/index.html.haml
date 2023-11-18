@@ -1,0 +1,32 @@
+.status-wrapper
+  .status-bar
+    .status-bar-left
+      =image_tag "status/B-Time Style.svg"
+    .status-bar-right
+      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+
+
+
+.container
+  .follow-top
+    .follow-top-back
+      = link_to :back do
+        = image_tag "status/Tabs.svg"
+    .follow-top-username
+      Followings
+    .follow-top-edit
+
+
+  -# フォロワーの一覧を表示
+  .follower-container
+    - @followings.each do |following|
+      %ul.follower-list
+        %li.follower-list-avatar
+          = image_tag following[:avatar] ,class: "avatars-comment"
+        %li.follower-list-info
+          .names-content
+            = following[:name]
+            %p Last seen 3hours ago
+      %hr

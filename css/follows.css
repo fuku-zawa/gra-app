@@ -1,0 +1,68 @@
+.follow-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.follow-top-back {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.follow-top-username {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.follow-top-edit {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+.follow-top-edit a {
+  text-decoration: none;
+  color: #333A42;
+}
+
+.follower-container {
+  margin-top: 50px;
+}
+
+.follower-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.follower-list li {
+  font-size: 16px;
+}
+.follower-list p {
+  max-width: 300px;
+}
+
+.follower-list-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.follower-list-info {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.follower-list-info p {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #9E9E9E;
+}/*# sourceMappingURL=follows.css.map */

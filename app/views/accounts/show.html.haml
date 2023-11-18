@@ -10,42 +10,36 @@
 
 
 .container
-  .profile-top
+  .profile-top#follow-button-id{data: {follow_button_id: @user.id}}
     .profile-top-back
       = link_to :back do
         = image_tag "status/Tabs.svg"
     .profile-top-username
-      = @user_name
+      = @user.name
     .profile-top-edit
-      = link_to "Edit", edit_profile_path 
+      %p.unfollow-button.hidden.follow-button-count Unfollow
+      %p.follow-button.hidden.follow-button-count Follow
 
-  = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "show-profile") do |f|
-    .profile-avatar.show-profile-avatar
-      - if @profile.avatar.attached?
-        = image_tag @profile.avatar
-      - else
-        = image_tag "default-avatar.png"
-    -# %br
-    -# =f.label :avatar, "Avatar", class: "image-button"
-    
-    -# アバター変更のためのフォーム（非表示）
-    = f.file_field :avatar, class: "image-form-none", id: "avatar-show-form"
-    = f.submit "Submit", class: "login-button", id: "avatar-show-button"
-    -# 
+  .profile-avatar.show-profile-avatar
+    - if @user.avatar.attached?
+      = image_tag @user.avatar
+    - else
+      = image_tag "default-avatar.png"
 
-  .profile-info
+
+  .profile-info#get-follow-length{data: {follow_length: @user.followers.length}}
     %dl.post-count
-      %dt= current_user.posts.length
+      %dt= @user.posts.length
       %dd Posts
     %dl.post-follower
-      %dt= @followers
+      %dt#followers-length
       %dd 
         = link_to account_followers_path(@user.id) do
           Followers
     %dl.post-following
-      %dt= @followings
-      %dd
-        = link_to account_followings_path(@user.id) do  
+      %dt= @user.followings.length
+      %dd 
+        = link_to account_followings_path(@user.id) do
           Followings
 
   .profile-post

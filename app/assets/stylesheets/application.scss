@@ -17,6 +17,7 @@
 @import "posts";
 @import "button";
 @import "index";
+@import "follows";
 
 * {
   font-family: 'Noto Sans JP', sans-serif;
@@ -30,4 +31,9 @@ img {
 
 .hidden {
   display: none;
+}
+
+a { 
+  text-decoration: none;
+  color:#9E9E9E;
 }

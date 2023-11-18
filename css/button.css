@@ -40,4 +40,8 @@
 
 #avatar-edit-button, #avatar-show-button {
   display: none;
+}
+
+.follow-button, .unfollow-button {
+  color: #9E9E9E;
 }/*# sourceMappingURL=button.css.map */

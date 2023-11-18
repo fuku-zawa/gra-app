@@ -12,5 +12,18 @@ Rails.application.routes.draw do
     resource :like, only:[:show, :create, :destroy]
     resources :comments, only:[:index, :new, :create]
   end
+
+  # userはdeviseが使用しているのでaccountに
+  resources :accounts, only:[:show] do
+    # accounts/:account_id/followsのPOSTでフォローの関係をつくる
+    resources :follows, only:[:index, :create]
+    # follows#destroyではなく、unfollows#createにする
+    resources :unfollows, only:[:create]
+
+    # フォロワーやフォローしている人の一覧ページ
+    resources :followers, only:[:index]
+    resources :followings, only:[:index]
+  end
+
   resource :profile, only:[:show, :edit, :update]
 end
