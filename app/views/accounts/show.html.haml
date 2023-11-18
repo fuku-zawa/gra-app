@@ -33,7 +33,9 @@
       %dd Posts
     %dl.post-follower
       %dt#followers-length
-      %dd Followers
+      %dd 
+        = link_to account_followers_path(@user.id) do
+          Followers
     %dl.post-following
       %dt= @user.followings.length
       %dd Followings
