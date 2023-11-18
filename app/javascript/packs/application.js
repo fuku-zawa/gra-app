@@ -228,7 +228,7 @@ document.addEventListener('turbolinks:load', () => {
   const accountId = dataset.followButtonId
   // フォローしているかどうかを取得してボタンの表示を切り替え
   axios.get(`/accounts/${accountId}/follows`)
-  .then((response) => {
+    .then((response) => {
     // responseにあるhasFollowedのtrue・falseでボタンの切り替え
       const hasFollowed = response.data.hasFollowed
       if (hasFollowed) {
@@ -259,5 +259,29 @@ document.addEventListener('turbolinks:load', () => {
       }
     })
   })
+
+  // follower数の初期表示
+  const dataLength = $(`#get-follow-length`).data()
+  const followerCount = dataLength.followLength
+  const followerCountContainer = document.getElementById('followers-length')
+  followerCountContainer.append(followerCount)
+
+  // follower数の切り替え
+  $('.follow-button-count').on("click", () => {
+    axios.get(`/accounts/${accountId}/follows`)
+      .then((response) => {
+        const addFollowerCount = response.data.followers
+        const followerCountContainer = document.getElementById('followers-length')
+        followerCountContainer.innerHTML = addFollowerCount
+      })
+    })
+  
+  
+  // $('.follow-button-count').on('click', () => {
+  //   let dataLength = $(`#get-follow-length`).data()
+  //   let followerCount = dataLength.followLength
+  //   const followerCountContainer = document.getElementById('followers-length')
+  //   followerCountContainer.text(followerCount)
+  // })
 
 })

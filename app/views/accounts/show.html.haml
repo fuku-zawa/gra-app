@@ -17,8 +17,8 @@
     .profile-top-username
       = @user.name
     .profile-top-edit
-      %p.unfollow-button.hidden Unfollow
-      %p.follow-button.hidden Follow
+      %p.unfollow-button.hidden.follow-button-count Unfollow
+      %p.follow-button.hidden.follow-button-count Follow
 
   .profile-avatar.show-profile-avatar
     - if @user.avatar.attached?
@@ -27,12 +27,12 @@
       = image_tag "default-avatar.png"
 
 
-  .profile-info
+  .profile-info#get-follow-length{data: {follow_length: @user.followers.length}}
     %dl.post-count
       %dt= @user.posts.length
       %dd Posts
     %dl.post-follower
-      %dt= @user.followers.length
+      %dt#followers-length
       %dd Followers
     %dl.post-following
       %dt= @user.followings.length
