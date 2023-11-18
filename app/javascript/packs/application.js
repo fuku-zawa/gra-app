@@ -264,7 +264,7 @@ document.addEventListener('turbolinks:load', () => {
   const dataLength = $(`#get-follow-length`).data()
   const followerCount = dataLength.followLength
   const followerCountContainer = document.getElementById('followers-length')
-  followerCountContainer.append(followerCount)
+  followerCountContainer.innerHTML = followerCount
 
   // follower数の切り替え
   $('.follow-button-count').on("click", () => {
