@@ -1,0 +1,54 @@
+.follow-top {
+  display: flex;
+  justify-content: space-between;
+}
+.follow-top-back{
+  flex: 1;
+}
+.follow-top-username {
+  flex: 1;
+  text-align: center;
+}
+.follow-top-edit {
+  flex: 1;
+  text-align: right;
+  a {
+    text-decoration: none;
+    color: #333A42;
+  }
+}
+
+
+// フォロワーの一覧
+.follower-container { 
+  margin-top: 50px;
+}
+.follower-list {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  align-items: center;
+  li {
+    // margin-bottom: 10px;
+    font-size: 16px;
+  }
+  p {
+    max-width: 300px;
+  }
+  }
+
+  .follower-list-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .follower-list-info {
+    margin-left: 10px;
+    font-size: 14px;
+    p {
+      font-size: 12px;
+      margin-top: 10px;
+      color:#9E9E9E;
+    }
+  }
+
+// 

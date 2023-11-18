@@ -249,7 +249,11 @@ ol, ul {
   display: none;
 }
 
-.post-list {
+.follow-button, .unfollow-button {
+  color: #9E9E9E;
+}
+
+.post-list, .comments-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -265,7 +269,7 @@ ol, ul {
   font-size: 14px;
 }
 
-.post-list-info-time {
+.post-list-info-time, .comments-content {
   color: #9E9E9E;
   font-size: 12px;
 }
@@ -291,6 +295,61 @@ ol, ul {
 
 .post-mind {
   font-size: 12px;
+}
+
+.comments-content {
+  font-size: 14px;
+}
+
+.comments {
+  margin-top: 50px;
+}
+
+.comments-list {
+  margin-bottom: 30px;
+}
+.comments-list li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.comments-list p {
+  max-width: 300px;
+}
+.comments-list .avatars-comment {
+  max-width: 40px;
+}
+
+.profile-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profile-top-back {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.profile-top-username {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.profile-top-edit {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+.profile-top-edit a {
+  text-decoration: none;
+  color: #333A42;
 }
 
 * {
