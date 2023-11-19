@@ -15,7 +15,7 @@
       %li.post-new-item.left
         = link_to "Cancel", root_path
       %li.post-new-item
-        = "Status"
+        = "New Post"
       %li.post-new-item.right
         = f.submit "Post" 
 
@@ -23,7 +23,7 @@
       %li.post-new-avatar
         =image_tag "Bitmap.png"
       %li.post-new-name
-        = "Jackie Chan"
+        = @user.name
 
     %div
       -# = f.label :mind

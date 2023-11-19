@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
+    @user = current_user
     @list 
   end
 
