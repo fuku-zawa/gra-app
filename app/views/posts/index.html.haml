@@ -41,12 +41,15 @@
         %ul.post-list
           .post-set
             %li.post-large
-              =image_tag post.photos[0].variant(resize_and_pad: [198, 225]).processed
+              = link_to rails_blob_path(post.photos[0], only_path: true), data: {lightbox: "group-#{post.id}" } do
+                =image_tag post.photos[0].variant(resize_and_pad: [198, 225]).processed
             %li.post-small
               - if post.photos[1].presence
-                =image_tag post.photos[1].variant(resize_and_pad: [138, 109]).processed, class: "posts-image-margin"
-              - if post.photos[2].presence
-                =image_tag post.photos[2].variant(resize_and_pad: [138, 109]).processed
+                = link_to rails_blob_path(post.photos[1], only_path: true), data: {lightbox: "group-#{post.id}" } do
+                  =image_tag post.photos[1].variant(resize_and_pad: [138, 109]).processed, class: "posts-image-margin"
+                - if post.photos[2].presence
+                  = link_to rails_blob_path(post.photos[2], only_path: true), data: {lightbox: "group-#{post.id}" } do
+                    =image_tag post.photos[2].variant(resize_and_pad: [138, 109]).processed
       
       %ul.post-icon
         %li
