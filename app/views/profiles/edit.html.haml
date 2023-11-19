@@ -15,10 +15,11 @@
 
   .profile-edit-top
     .profile-edit-top-back
-      = link_to :back do
-        = image_tag "status/Tabs.svg"
+      = link_to root_path do
+        Home
     .profile-edit-top-username
       Profile Edit
+    .profile-blank
 
   
   = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "edit-profile") do |f|
