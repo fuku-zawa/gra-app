@@ -8,6 +8,13 @@
 -#       =image_tag "status/B-Battery.svg", class: "status-bar-item"
 = render "commons/status"
 
+.post-index-top
+  .profile-index-top-profile-button
+    = link_to profile_path do
+      Profile
+  .profile-index-top-post-button
+    = link_to new_post_path do
+      Post
 
 .container
   - @posts.each do |post|
@@ -25,7 +32,7 @@
           %li
             = post.user.name
             -# jqueryでpost.idを取得するためのコード　消したらダメ
-            %p{class: "post-index-count hidden"}= post.id
+            %p.post-index-count.hidden= post.id
 
           %li.post-list-info-time
             = time_ago_in_words(post.created_at) + "前"
@@ -58,9 +65,9 @@
         - if post.likes_count == 0
           = "No liked"
         - elsif post.likes_count == 1
-          = "#{@posts.first.user.name} liked your post"
+          = "#{post.likes[0].user.name} liked this post"
         - else
-          = "#{@posts.first.user.name} and #{post.likes_count - 1} other liked your post"
+          = "#{post.likes[0].user.name} and #{post.likes_count - 1} other liked this post"
 
       .post-mind
         = post.mind
