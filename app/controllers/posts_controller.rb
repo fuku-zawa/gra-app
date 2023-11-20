@@ -14,6 +14,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    # 投稿をはじいた時に、@userを取得できるように
+    @user = current_user
+    
     if @post.save
       redirect_to posts_path, notice: "保存できたよ"
     else

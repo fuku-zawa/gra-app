@@ -23,7 +23,7 @@
       %li.post-new-avatar
         =image_tag "Bitmap.png"
       %li.post-new-name
-        = @user.name
+        = @user&.name
 
     %div
       -# = f.label :mind
