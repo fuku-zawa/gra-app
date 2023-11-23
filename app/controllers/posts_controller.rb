@@ -8,11 +8,15 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
+    @user = current_user
     @list 
   end
 
   def create
     @post = current_user.posts.build(post_params)
+    # 投稿をはじいた時に、@userを取得できるように
+    @user = current_user
+    
     if @post.save
       redirect_to posts_path, notice: "保存できたよ"
     else

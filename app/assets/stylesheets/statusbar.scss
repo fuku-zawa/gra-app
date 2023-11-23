@@ -1,7 +1,10 @@
 .status-wrapper {
   // position: relative;
+  // z-index: 99;
   margin-bottom: 20px;
 }
+
+
 .status-bar {
   // position: absolute;
   width: 100%;
@@ -11,9 +14,23 @@
 }
 .status-bar-left {
   margin: 10px 0 0 10px;
+
 }
 .status-bar-right {
   margin: 10px 10px 0 0;
+
+}
+.status-white-left {
+  margin: 10px 0 0 10px;
+  position: fixed;
+  top: 0px;
+  left:0px;
+}
+.status-white-right {
+  margin: 10px 10px 0 0;
+  position: fixed;
+  top: 0px;
+  right:0px;
 }
 .login-top-image {
   width: 100%;

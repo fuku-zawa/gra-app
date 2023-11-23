@@ -1,15 +1,20 @@
-= @user
+-# .status-wrapper
+-#   .status-bar
+-#     .status-bar-left
+-#       =image_tag "status/B-Time Style.svg"
+-#     .status-bar-right
+-#       =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Battery.svg", class: "status-bar-item"
+= render "commons/status"
 
-= link_to "ログアウト", destroy_user_session_path, data: {method: "delete"}
-
-.status-wrapper
-  .status-bar
-    .status-bar-left
-      =image_tag "status/B-Time Style.svg"
-    .status-bar-right
-      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
-      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
-      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+.post-index-top
+  .profile-index-top-profile-button
+    = link_to profile_path do
+      Profile
+  .profile-index-top-post-button
+    = link_to new_post_path do
+      New Post
 
 .container
   - @posts.each do |post|
@@ -27,21 +32,24 @@
           %li
             = post.user.name
             -# jqueryでpost.idを取得するためのコード　消したらダメ
-            %p{class: "post-index-count hidden"}= post.id
+            %p.post-index-count.hidden= post.id
 
           %li.post-list-info-time
-            = time_ago_in_words(post.created_at) + " ago"
+            = time_ago_in_words(post.created_at) + "前"
       
       .post-photo
         %ul.post-list
           .post-set
             %li.post-large
-              =image_tag post.photos[0].variant(resize_and_pad: [198, 225]).processed
+              = link_to rails_blob_path(post.photos[0], only_path: true), data: {lightbox: "group-#{post.id}" } do
+                =image_tag post.photos[0].variant(resize_and_pad: [198, 225]).processed
             %li.post-small
               - if post.photos[1].presence
-                =image_tag post.photos[1].variant(resize_and_pad: [138, 109]).processed, class: "posts-image-margin"
-              - if post.photos[2].presence
-                =image_tag post.photos[2].variant(resize_and_pad: [138, 109]).processed
+                = link_to rails_blob_path(post.photos[1], only_path: true), data: {lightbox: "group-#{post.id}" } do
+                  =image_tag post.photos[1].variant(resize_and_pad: [138, 109]).processed, class: "posts-image-margin"
+                - if post.photos[2].presence
+                  = link_to rails_blob_path(post.photos[2], only_path: true), data: {lightbox: "group-#{post.id}" } do
+                    =image_tag post.photos[2].variant(resize_and_pad: [138, 109]).processed
       
       %ul.post-icon
         %li
@@ -60,9 +68,9 @@
         - if post.likes_count == 0
           = "No liked"
         - elsif post.likes_count == 1
-          = "#{@posts.first.user.name} liked your post"
+          = "#{post.likes[0].user.name} liked this post"
         - else
-          = "#{@posts.first.user.name} and #{post.likes_count - 1} other liked your post"
+          = "#{post.likes[0].user.name} and #{post.likes_count - 1} other liked this post"
 
       .post-mind
         = post.mind

@@ -12,11 +12,15 @@
 .post-list-info {
   margin-left: 10px;
   font-size: 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .post-list-info-time, .comments-content {
   color: #9E9E9E;
   font-size: 12px;
+  margin-top: 5px;
 }
 
 .post-photo {
@@ -62,4 +66,22 @@
 }
 .comments-list .avatars-comment {
   max-width: 40px;
+}
+
+.post-index-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.profile-index-top-profile-button {
+  margin-left: 20px;
+}
+
+.profile-index-top-post-button {
+  margin-right: 20px;
 }/*# sourceMappingURL=index.css.map */

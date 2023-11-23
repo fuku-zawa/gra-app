@@ -17,6 +17,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   belongs_to :user
+  validates :mind, presence: true
+  validates :photos, presence: true
   
   def likes_count
     likes.count

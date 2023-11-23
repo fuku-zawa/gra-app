@@ -166,7 +166,7 @@ document.addEventListener('turbolinks:load', () => {
 
 
 // 新規投稿関係
-$(() => {
+document.addEventListener('turbolinks:load', () => {
 
   $('.edit-profile-avatar').on('click', () => {
     $("#avatar-edit-form").click()
@@ -184,8 +184,8 @@ $(() => {
   })
 
   // アップする画像のプレビュー（posts/new）
-  // file_fieldから選択されたファイルを読み込んで表示する
-  $(document).ready(function() {
+  // file_fieldから選択されたファイルを読み込んで表示する（$(document).readyにしていたが、非推奨らしい）
+  $(()=> {
     // file_fieldの値（選択されたファイル）が変更されたときに実行するイベントハンドラ
     $('#post-photo').on('change', function() {
       // 選択したファイルthis（inputタグがそのまま入ってくる感じ？）を格納

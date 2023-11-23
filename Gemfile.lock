@@ -55,6 +55,8 @@ GEM
       activejob (= 6.0.6.1)
       activerecord (= 6.0.6.1)
       marcel (~> 1.0)
+    activestorage-validator (0.2.2)
+      rails (>= 6.0.4.1)
     activesupport (6.0.6.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
@@ -338,6 +340,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  activestorage-validator
   annotate
   better_errors
   binding_of_caller

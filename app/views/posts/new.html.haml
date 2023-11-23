@@ -1,11 +1,13 @@
-.status-wrapper
-  .status-bar
-    .status-bar-left
-      =image_tag "status/B-Time Style.svg"
-    .status-bar-right
-      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
-      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
-      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+-# .status-wrapper
+-#   .status-bar
+-#     .status-bar-left
+-#       =image_tag "status/B-Time Style.svg"
+-#     .status-bar-right
+-#       =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Battery.svg", class: "status-bar-item"
+= render "commons/status"
+
 
 .container
   = form_with(model:@post, url: posts_path, method: "post", local:true) do |f|
@@ -13,7 +15,7 @@
       %li.post-new-item.left
         = link_to "Cancel", root_path
       %li.post-new-item
-        = "Status"
+        = "New Post"
       %li.post-new-item.right
         = f.submit "Post" 
 
@@ -21,7 +23,7 @@
       %li.post-new-avatar
         =image_tag "Bitmap.png"
       %li.post-new-name
-        = "Jackie Chan"
+        = @user&.name
 
     %div
       -# = f.label :mind

@@ -1,14 +1,17 @@
-.status-wrapper
-  .status-bar
-    .status-bar-left
-      =image_tag "status/W-Time Style.svg"
-    .status-bar-right
-      =image_tag "status/W-Mobile Signal.svg", class: "status-bar-item"
-      =image_tag "status/W-Wifi.svg", class: "status-bar-item"
-      =image_tag "status/W-Battery.svg", class: "status-bar-item"
+-# .status-wrapper
+-#   .status-bar
+-#     .status-bar-left
+-#       =image_tag "status/W-Time Style.svg"
+-#     .status-bar-right
+-#       =image_tag "status/W-Mobile Signal.svg", class: "status-bar-item"
+-#       =image_tag "status/W-Wifi.svg", class: "status-bar-item"
+-#       =image_tag "status/W-Battery.svg", class: "status-bar-item"
 
-  .login-top
-    = image_tag "Rectangle.png", class: "login-top-image"
+
+= render "commons/status_white"
+
+.login-top
+  = image_tag "Rectangle.png", class: "login-top-image"
 
 .container
   .login-form

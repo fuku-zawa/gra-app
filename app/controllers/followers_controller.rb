@@ -1,4 +1,5 @@
 class FollowersController < ApplicationController
+  before_action :authenticate_user!
   # フォロワーの一覧を表示する
 
   def index

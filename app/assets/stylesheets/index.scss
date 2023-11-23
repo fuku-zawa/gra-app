@@ -10,10 +10,12 @@
 .post-list-info {
   margin-left: 10px;
   font-size: 14px;
+  align-items: center;
 }
 .post-list-info-time,.comments-content {
   color: #9E9E9E;
   font-size: 12px;
+  margin-top: 5px;
 }
 .post-photo {
   margin: 10px 0;
@@ -54,4 +56,18 @@
   max-width: 40px;
 }
 
+}
+// 
+
+// posts/index
+.post-index-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.profile-index-top-profile-button{
+  margin-left: 20px;
+}
+.profile-index-top-post-button{
+  margin-right: 20px;
 }

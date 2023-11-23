@@ -1,11 +1,12 @@
-.status-wrapper
-  .status-bar
-    .status-bar-left
-      =image_tag "status/B-Time Style.svg"
-    .status-bar-right
-      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
-      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
-      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+-# .status-wrapper
+-#   .status-bar
+-#     .status-bar-left
+-#       =image_tag "status/B-Time Style.svg"
+-#     .status-bar-right
+-#       =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Battery.svg", class: "status-bar-item"
+= render "commons/status"
 
 .container
   %ul
@@ -14,10 +15,11 @@
 
   .profile-edit-top
     .profile-edit-top-back
-      = link_to :back do
-        = image_tag "status/Tabs.svg"
+      = link_to root_path do
+        Home
     .profile-edit-top-username
       Profile Edit
+    .profile-blank
 
   
   = form_with(model: @profile, url: profile_path, method: "put", local: true, id: "edit-profile") do |f|

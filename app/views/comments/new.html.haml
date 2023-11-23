@@ -1,11 +1,12 @@
-.status-wrapper
-  .status-bar
-    .status-bar-left
-      =image_tag "status/B-Time Style.svg"
-    .status-bar-right
-      =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
-      =image_tag "status/B-Wifi.svg", class: "status-bar-item"
-      =image_tag "status/B-Battery.svg", class: "status-bar-item"
+-# .status-wrapper
+-#   .status-bar
+-#     .status-bar-left
+-#       =image_tag "status/B-Time Style.svg"
+-#     .status-bar-right
+-#       =image_tag "status/B-Mobile Signal.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Wifi.svg", class: "status-bar-item"
+-#       =image_tag "status/B-Battery.svg", class: "status-bar-item"
+= render "commons/status"
 
 -# id="post-id"  data-post-id="33"
 .container#post-id{data: {post_id: @post.id, avatar: @comment_avatar}}
