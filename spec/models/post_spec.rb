@@ -7,12 +7,12 @@ RSpec.describe Post, type: :model do
   let!(:user) { create(:user) }
 
   context 'mindが空の場合' do  
-    let!(:post) { build(:post, user: user)}
+    let!(:post) { build(:post, mind: '', user: user)}
 
     before do
       post.save
     end
-    
+
     it '保存に失敗する' do
       expect(post.errors.messages[:mind][0]).to eq('を入力してください')  
       
