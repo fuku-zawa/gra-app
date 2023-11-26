@@ -17,20 +17,21 @@
         = image_tag "status/Tabs.svg"
     .profile-edit-top-username
       Comment
+    .profile-blank
     
-    .comments#comments-block
-      -# これが挿入される
-      -#  <ul class="post-list comments-list">
-            <li class="avatars-content">
-              <img src="${avatar}" class="avatars-comment">
+  .comments#comments-block
+    -# これが挿入される
+    -#  <ul class="post-list comments-list">
+          <li class="avatars-content">
+            <img src="${avatar}" class="avatars-comment">
+          </li>
+          <div class="post-list-info">
+            <li class="names-content">
+              ${name}
             </li>
-            <div class="post-list-info">
-              <li class="names-content">
-                ${name}
-              </li>
-              <p class="comment-content">${comment}</p>
-            </div>
-          </ul>
+            <p class="comment-content">${comment}</p>
+          </div>
+        </ul>
 
 
   -# <textarea name="comment_content" id="comment_content"></textarea>
