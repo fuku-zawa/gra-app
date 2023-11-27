@@ -55,21 +55,26 @@
         .profile-post-set
           %li.profile-post-large
             = link_to rails_blob_path(@list[num], only_path: true), data: {lightbox: "group" } do
-              = image_tag @list[num]&.variant(resize_and_pad: [207, 192])&.processed || ""
+              = image_tag @list[num]&.variant(resize_and_pad: [207, 192])&.processed
           %li.profile-post-small
-            = link_to rails_blob_path(@list[num+1], only_path: true), data: {lightbox: "group" } do
-              = image_tag @list[num+1]&.variant(resize_and_pad: [128, 92])&.processed || "", class: "posts-image-margin"
-            = link_to rails_blob_path(@list[num+2], only_path: true), data: {lightbox: "group" } do
-              = image_tag @list[num+2]&.variant(resize_and_pad: [128, 92])&.processed || ""
+            - if @list[num+1].present?
+              = link_to rails_blob_path(@list[num+1], only_path: true), data: {lightbox: "group" } do
+                = image_tag @list[num+1]&.variant(resize_and_pad: [128, 92])&.processed || "", class: "posts-image-margin"
+            - if @list[num+2].present?
+              = link_to rails_blob_path(@list[num+2], only_path: true), data: {lightbox: "group" } do
+                = image_tag @list[num+2]&.variant(resize_and_pad: [128, 92])&.processed || ""
         .profile-post-set
           %li.profile-post-small
-            = link_to rails_blob_path(@list[num+3], only_path: true), data: {lightbox: "group" } do 
-              = image_tag @list[num+3]&.variant(resize_and_pad: [128, 92])&.processed || "", class: "posts-image-margin"
-            = link_to rails_blob_path(@list[num+4], only_path: true), data: {lightbox: "group" } do 
-              = image_tag @list[num+4]&.variant(resize_and_pad: [128, 92])&.processed || ""
+            - if @list[num+3].present?
+              = link_to rails_blob_path(@list[num+3], only_path: true), data: {lightbox: "group" } do
+                = image_tag @list[num+3]&.variant(resize_and_pad: [128, 92])&.processed || "", class: "posts-image-margin"
+            - if @list[num+4].present? 
+              = link_to rails_blob_path(@list[num+4], only_path: true), data: {lightbox: "group" } do
+                = image_tag @list[num+4]&.variant(resize_and_pad: [128, 92])&.processed || ""
           %li.profile-post-large
-            = link_to rails_blob_path(@list[num+5], only_path: true), data: {lightbox: "group" } do
-              = image_tag @list[num+5]&.variant(resize_and_pad: [207, 192])&.processed || ""
+            - if @list[num+5].present?
+              = link_to rails_blob_path(@list[num+5], only_path: true), data: {lightbox: "group" } do
+                = image_tag @list[num+5]&.variant(resize_and_pad: [207, 192])&.processed
         - num += 6
       
       = @list.length
