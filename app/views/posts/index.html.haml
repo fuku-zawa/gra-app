@@ -24,10 +24,10 @@
           -# 自分のアバターをクリックしたらプロフィールページにとぶ
           - if  post.user.id == @current_user.id
             = link_to profile_path do
-              = image_tag post.user.avatar || "default-avatar.png"
+              = image_tag post.user.avatar || "default-avatar.png", alt: "system-spec"
           - else
-            = link_to account_path(post.user) do
-              = image_tag post.user.avatar || "default-avatar.png"
+            = link_to account_path(post.user), class: "system-spec" do
+              = image_tag post.user.avatar || "default-avatar.png", alt: "system-spec"
         .post-list-info
           %li
             = post.user.name

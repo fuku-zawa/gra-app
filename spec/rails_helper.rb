@@ -68,4 +68,5 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # ログイン状態を作るためにdeviseの設定(request_specについて↓をインストールする)
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :system
 end
